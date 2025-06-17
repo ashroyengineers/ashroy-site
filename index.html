@@ -800,6 +800,30 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
+        /* Facebook Button */
+        .facebook-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #4267B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .facebook-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
         /* Stats Section */
         #stats {
             background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5f 100%);
@@ -969,7 +993,7 @@
             h2 { font-size: 3.2rem; }
             .hero-content h1 { font-size: 3.8rem; }
             .project-card {
-                flex: 0 0 calc(50% - 15px);
+                flex: 0 0 calc(33.333% - 20px);
             }
         }
 
@@ -1054,6 +1078,15 @@
                 width: 150px;
                 height: 150px;
             }
+            /* Mobile adjustments for social buttons */
+            .whatsapp-btn, .facebook-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .facebook-btn {
+                bottom: 90px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1076,6 +1109,15 @@
             .project-slide-info {
                 padding: 30px 20px;
             }
+            /* Mobile adjustments for social buttons */
+            .whatsapp-btn, .facebook-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            .facebook-btn {
+                bottom: 85px;
+            }
         }
     </style>
 </head>
@@ -1084,6 +1126,11 @@
     <!-- WhatsApp Button -->
     <a href="https://wa.me/+8801615645860" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Facebook Button -->
+    <a href="https://www.facebook.com/ashroyengr" class="facebook-btn" target="_blank">
+        <i class="fab fa-facebook-f"></i>
     </a>
 
     <header id="main-header">
@@ -1365,7 +1412,7 @@
                 
                 <!-- View All Projects Button -->
                 <div class="view-all-projects">
-                    <a href="#" class="btn">সমস্ত চলমান প্রকল্প দেখুন</a>
+                    <a href="https://www.facebook.com/ashroyengr" class="btn" target="_blank">সমস্ত চলমান প্রকল্প দেখুন</a>
                 </div>
             </div>
         </div>
