@@ -824,31 +824,49 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        /* Stats Section */
+        /* Stats Section - Redesigned */
         #stats {
             background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5f 100%);
             color: var(--white-color);
             text-align: center;
-            padding: 80px 0;
+            padding: 60px 0;
         }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         .stat-item {
-            padding: 20px;
+            padding: 25px 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 0;
+            height: 70%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .stat-item:last-child::after {
+            display: none;
         }
         .stat-number {
-            font-size: 4rem;
+            font-size: 2.8rem;
             font-weight: 700;
             font-family: var(--heading-font);
             margin-bottom: 10px;
             color: var(--secondary-color);
+            line-height: 1;
         }
         .stat-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
+            line-height: 1.3;
         }
 
         /* Footer - Modernized */
@@ -995,6 +1013,12 @@
             .project-card {
                 flex: 0 0 calc(33.333% - 20px);
             }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            .stat-text {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 992px) {
@@ -1013,6 +1037,9 @@
             }
             .team-subtitle {
                 font-size: 2.4rem;
+            }
+            .stat-item::after {
+                display: none;
             }
         }
 
@@ -1078,6 +1105,15 @@
                 width: 150px;
                 height: 150px;
             }
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            .stat-text {
+                font-size: 0.95rem;
+            }
             /* Mobile adjustments for social buttons */
             .whatsapp-btn, .facebook-btn {
                 width: 50px;
@@ -1108,6 +1144,19 @@
             }
             .project-slide-info {
                 padding: 30px 20px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .stat-item {
+                padding: 15px;
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            .stat-text {
+                font-size: 1.1rem;
             }
             /* Mobile adjustments for social buttons */
             .whatsapp-btn, .facebook-btn {
@@ -1146,9 +1195,9 @@
                 <button class="mobile-menu-toggle nav-close-btn">&times;</button>
                 <ul>
                     <li><a href="#hero" class="active">হোম</a></li>
-                    <li><a href="#services">সেবাসমূহ</a></li>
                     <li><a href="#about">আমাদের সম্পর্কে</a></li>
                     <li><a href="#projects">প্রকল্পসমূহ</a></li>
+                    <li><a href="#services">সেবাসমূহ</a></li>
                     <li><a href="#team">টিম</a></li>
                     <li><a href="#contact">যোগাযোগ</a></li>
                 </ul>
@@ -1165,80 +1214,6 @@
                 <div class="hero-btns">
                     <a href="#projects" class="btn">আমাদের প্রকল্প দেখুন</a>
                     <a href="#contact" class="btn btn-accent">যোগাযোগ করুন</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <div class="section-title">
-                <span>আমরা কি করি</span>
-                <h2>আমাদের সেবাসমূহ</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
-                    <h3>স্থাপত্য ডিজাইন</h3>
-                    <p>আধুনিক ও কার্যকরী স্থাপত্য নকশা</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>জমির প্ল্যান</h3>
-                    <p>জমির সর্বোত্তম ব্যবহার নিশ্চিতকরণ</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-cube"></i></div>
-                    <h3>3D ভিউ</h3>
-                    <p>বাস্তবসম্মত 3D ভিজ্যুয়ালাইজেশন</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>কাঠামোগত ডিজাইন</h3>
-                    <p>নিরাপদ ও টেকসই কাঠামো নকশা</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-calculator"></i></div>
-                    <h3>অনুমান ও ব্যয়</h3>
-                    <p>সঠিক বাজেট ও ব্যয় পরিকল্পনা</p>
-                </div>
-                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
-                    <h3>অভ্যন্তরীণ ডিজাইন</h3>
-                    <p>আকর্ষণীয় ও আরামদায়ক ইন্টেরিয়র</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-tree"></i></div>
-                    <h3>ল্যান্ডস্কেপ ডিজাইন</h3>
-                    <p>সুন্দর ও ব্যবহার উপযোগী বাহ্যিক ডিজাইন</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-file-contract"></i></div>
-                    <h3>রাজউক অনুমোদন</h3>
-                    <p>সকল প্রকার অনুমোদন প্রক্রিয়াকরণ</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">120+</div>
-                    <div class="stat-text">সম্পন্ন প্রকল্প</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-text">বছরের অভিজ্ঞতা</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-text">পেশাদার কর্মী</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-text">গ্রাহক সন্তুষ্টি</div>
                 </div>
             </div>
         </div>
@@ -1418,6 +1393,80 @@
         </div>
     </section>
 
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <span>আমরা কি করি</span>
+                <h2>আমাদের সেবাসমূহ</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                    <h3>স্থাপত্য ডিজাইন</h3>
+                    <p>আধুনিক ও কার্যকরী স্থাপত্য নকশা</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3>জমির প্ল্যান</h3>
+                    <p>জমির সর্বোত্তম ব্যবহার নিশ্চিতকরণ</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cube"></i></div>
+                    <h3>3D ভিউ</h3>
+                    <p>বাস্তবসম্মত 3D ভিজ্যুয়ালাইজেশন</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <h3>কাঠামোগত ডিজাইন</h3>
+                    <p>নিরাপদ ও টেকসই কাঠামো নকশা</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>অনুমান ও ব্যয়</h3>
+                    <p>সঠিক বাজেট ও ব্যয় পরিকল্পনা</p>
+                </div>
+                 <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
+                    <h3>অভ্যন্তরীণ ডিজাইন</h3>
+                    <p>আকর্ষণীয় ও আরামদায়ক ইন্টেরিয়র</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tree"></i></div>
+                    <h3>ল্যান্ডস্কেপ ডিজাইন</h3>
+                    <p>সুন্দর ও ব্যবহার উপযোগী বাহ্যিক ডিজাইন</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>রাজউক অনুমোদন</h3>
+                    <p>সকল প্রকার অনুমোদন প্রক্রিয়াকরণ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-text">সম্পন্ন প্রকল্প</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-text">বছরের অভিজ্ঞতা</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-text">পেশাদার কর্মী</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-text">গ্রাহক সন্তুষ্টি</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="team">
         <div class="container">
             <div class="section-title">
@@ -1428,10 +1477,10 @@
             <h3 class="team-subtitle">উপদেষ্টা মন্ডলী</h3>
             <div class="team-grid">
                 <div class="team-card advisor">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professor Dr. Md. Nazrul Islam"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/9SH9l2R.jpeg" alt="Professor Dr. Md. Nazrul Islam"></div>
                     <div class="team-card-info">
                         <h4>Professor Dr. Md. Nazrul Islam</h4>
-                        <span class="designation">বিশেষজ্ঞ উপদেষ্টা</span>
+                        <span class="designation">প্রধান উপদেষ্টা</span>
                         <p>B.Sc. Engg (Civil, BUET), M.Sc. Engg (Structural, BUET), Ph.D (Structural, UKM), Life Fellow (IEB)</p>
                         <div class="team-socials">
                              <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1440,7 +1489,7 @@
                     </div>
                 </div>
                 <div class="team-card advisor">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Engr. Md. Habibullah"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/VCZ87ZC.jpeg" alt="Engr. Md. Habibullah"></div>
                     <div class="team-card-info">
                         <h4>Engr. Md. Habibullah</h4>
                         <span class="designation">বিশেষজ্ঞ উপদেষ্টা</span>
@@ -1452,7 +1501,7 @@
                     </div>
                 </div>
                 <div class="team-card advisor">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Engr. Shahidur Rahman"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/fHuJbWw.jpeg" alt="Engr. Shahidur Rahman"></div>
                     <div class="team-card-info">
                         <h4>Engr. Shahidur Rahman</h4>
                         <span class="designation">বিশেষজ্ঞ উপদেষ্টা</span>
@@ -1468,7 +1517,7 @@
             <h3 class="team-subtitle">ডিজাইন টিম</h3>
             <div class="team-grid">
                 <div class="team-card">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Engr. Mahbobur Rahman Rasel"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/3kdxCSV.jpeg" alt="Engr. Mahbobur Rahman Rasel"></div>
                     <div class="team-card-info">
                         <h4>Engr. Mahbobur Rahman Rasel</h4>
                         <span class="designation">প্রতিষ্ঠাতা ও সিইও</span>
@@ -1480,7 +1529,7 @@
                     </div>
                 </div>
                 <div class="team-card">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Arch. Emadul Haque"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/uoF7dNb.jpeg" alt="Arch. Emadul Haque"></div>
                     <div class="team-card-info">
                         <h4>Arch. Emadul Haque</h4>
                         <span class="designation">সিনিয়র স্থপতি</span>
@@ -1492,7 +1541,7 @@
                     </div>
                 </div>
                  <div class="team-card">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Eng. Mushfiqur Rahman Akash"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/NnlAlKT.jpeg" alt="Eng. Mushfiqur Rahman Akash"></div>
                     <div class="team-card-info">
                         <h4>Eng. Mushfiqur Rahman Akash</h4>
                         <span class="designation">সিনিয়র সিভিল ইঞ্জিনিয়ার</span>
@@ -1504,7 +1553,7 @@
                     </div>
                 </div>
                 <div class="team-card">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Engr. Rashidul Islam Rony"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/YP3Anzu.jpeg" alt="Engr. Rashidul Islam Rony"></div>
                     <div class="team-card-info">
                         <h4>Engr. Rashidul Islam Rony</h4>
                         <span class="designation">সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার</span>
@@ -1517,7 +1566,7 @@
                 </div>
                 <!-- New Team Member Added Here -->
                 <div class="team-card">
-                    <div class="team-card-img"><img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Engr. Shamim Hossen"></div>
+                    <div class="team-card-img"><img src="https://i.imgur.com/SwNXcPp.jpeg" alt="Engr. Shamim Hossen"></div>
                     <div class="team-card-info">
                         <h4>Engr. Shamim Hossen</h4>
                         <span class="designation">সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার</span>
@@ -1615,8 +1664,8 @@
                     <h3>গুরুত্বপূর্ণ লিঙ্ক</h3>
                     <ul class="footer-links">
                         <li><a href="#about">আমাদের সম্পর্কে</a></li>
-                        <li><a href="#services">সেবাসমূহ</a></li>
                         <li><a href="#projects">প্রকল্পসমূহ</a></li>
+                        <li><a href="#services">সেবাসমূহ</a></li>
                         <li><a href="#team">আমাদের টিম</a></li>
                         <li><a href="#contact">যোগাযোগ</a></li>
                     </ul>
