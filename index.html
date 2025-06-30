@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashroy Architect's & Engineer's - আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়</title>
+    <link rel="icon" href="https://i.imgur.com/12REMj2.jpeg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -185,14 +186,17 @@
         .logo-img {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
+            overflow: hidden;
+        }
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
         }
         .logo h1 {
             margin: 0;
@@ -1185,7 +1189,9 @@
     <header id="main-header">
         <div class="container header-content">
             <a href="#hero" class="logo">
-                <div class="logo-img">A</div>
+                <div class="logo-img">
+                    <img src="https://i.imgur.com/12REMj2.jpeg" alt="Ashroy Logo">
+                </div>
                 <div>
                     <h1>Ashroy</h1>
                     <span>Architect's & Engineer's</span>
@@ -1649,8 +1655,13 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="#hero" class="logo">
-                        <h1>Ashroy</h1>
-                        <span>Architect's & Engineer's</span>
+                        <div class="logo-img">
+                            <img src="https://i.imgur.com/12REMj2.jpeg" alt="Ashroy Logo">
+                        </div>
+                        <div>
+                            <h1>Ashroy</h1>
+                            <span>Architect's & Engineer's</span>
+                        </div>
                     </a>
                     <p>আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম।</p>
                      <div class="footer-socials">
