@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashroy Architect's & Engineer's - আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়</title>
+    <title data-lang-key="siteTitle">Ashroy Architect's & Engineer's - আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়</title>
     <link rel="icon" href="https://i.imgur.com/12REMj2.jpeg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* CSS Custom Properties (Variables) */
         :root {
@@ -22,8 +22,19 @@
             --heading-font: 'Teko', sans-serif;
             --body-font: 'Hind Siliguri', sans-serif;
             --transition-speed: 0.4s;
-            --border-radius: 10px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --primary-color: #e2e8f0;
+            --secondary-color: #4fd1c5;
+            --accent-color: #f56565;
+            --light-color: #1a202c;
+            --dark-color: #e2e8f0;
+            --text-color: #a0aec0;
+            --white-color: #2d3748;
         }
 
         /* Base Styles */
@@ -43,6 +54,7 @@
             background-color: var(--white-color);
             line-height: 1.7;
             overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         /* Container */
@@ -59,11 +71,13 @@
             font-weight: 600;
             line-height: 1.2;
             letter-spacing: 1px;
+            transition: color var(--transition-speed);
         }
 
-        h2 { font-size: 3.8rem; }
-        h3 { font-size: 2.4rem; }
+        h2 { font-size: 3.5rem; }
+        h3 { font-size: 2.2rem; }
         p { margin-bottom: 1rem; }
+        a { text-decoration: none; color: inherit; }
 
         /* Section Styling */
         section {
@@ -73,7 +87,7 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
             position: relative;
         }
 
@@ -83,7 +97,7 @@
             font-weight: 600;
             display: block;
             margin-bottom: 10px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -110,7 +124,7 @@
             display: inline-block;
             padding: 14px 38px;
             background-color: var(--secondary-color);
-            color: var(--white-color);
+            color: #fff;
             border: 2px solid var(--secondary-color);
             border-radius: 50px;
             text-decoration: none;
@@ -127,23 +141,25 @@
         .btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 0;
-            height: 100%;
-            background: var(--white-color);
-            transition: width 0.5s ease;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: width 0.5s ease, height 0.5s ease;
             z-index: -1;
         }
 
         .btn:hover {
-            color: var(--secondary-color);
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .btn:hover::before {
-            width: 100%;
+            width: 250px;
+            height: 250px;
         }
         
         .btn-accent {
@@ -151,11 +167,7 @@
             border-color: var(--accent-color);
         }
         
-        .btn-accent:hover {
-            color: var(--accent-color);
-        }
-
-        /* Header - Modernized */
+        /* Header */
         #main-header {
             position: fixed;
             top: 0;
@@ -163,10 +175,14 @@
             width: 100%;
             z-index: 1000;
             padding: 15px 0;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all var(--transition-speed) ease;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        body.dark-mode #main-header {
+            background-color: rgba(45, 55, 72, 0.8);
         }
         #main-header.scrolled {
             padding: 10px 0;
@@ -181,33 +197,28 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            text-decoration: none;
         }
         .logo-img {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
         .logo-img img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            padding: 5px;
         }
         .logo h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
             line-height: 1;
         }
         .logo span { 
             color: var(--secondary-color);
             display: block;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             margin-top: 3px;
         }
@@ -217,7 +228,6 @@
         }
         .main-nav li { margin-left: 35px; }
         .main-nav a {
-            text-decoration: none;
             color: var(--dark-color);
             font-weight: 500;
             position: relative;
@@ -244,32 +254,60 @@
         }
         .mobile-menu-toggle { display: none; }
 
-        /* Hero Section - Modernized */
+        /* Theme and Language Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 20px;
+        }
+        .theme-toggle, .lang-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            border: 1px solid transparent;
+        }
+        .theme-toggle:hover, .lang-toggle:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: rotate(15deg);
+        }
+        .lang-toggle {
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
         #hero {
-            background: linear-gradient(135deg, rgba(10, 37, 64, 0.85) 0%, rgba(78, 205, 196, 0.85) 100%), 
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.9) 0%, rgba(78, 205, 196, 0.8) 100%), 
                         url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
             color: var(--white-color);
             padding-top: 80px;
         }
         .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            animation: fadeInUp 1s ease;
+            max-width: 750px;
+            animation: fadeInUp 1s ease-out;
         }
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: 4.2rem;
             color: var(--white-color);
             margin-bottom: 1.5rem;
             line-height: 1.1;
             text-transform: uppercase;
         }
         .hero-content p {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
             color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
@@ -280,172 +318,22 @@
             margin-top: 30px;
         }
 
-        /* Services Section - Modernized */
-        #services { 
-            background-color: var(--light-color); 
-            position: relative;
-            overflow: hidden;
-        }
-        #services::before {
-            content: '';
-            position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: var(--secondary-color);
-            opacity: 0.1;
-            z-index: 0;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 1;
-        }
-        .service-card {
-            background-color: var(--white-color);
-            padding: 40px 30px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all var(--transition-speed) ease;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--secondary-color);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-        }
-        .service-card:hover::before {
-            transform: translateY(0);
-        }
-        .service-icon {
-            font-size: 3.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-        }
-        .service-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            transition: color 0.3s ease;
-        }
-        .service-card:hover h3 {
-            color: var(--secondary-color);
-        }
-
-        /* About Section - Modernized */
-        #about {
-            position: relative;
-            overflow: hidden;
-        }
-        #about::after {
-            content: '';
-            position: absolute;
-            bottom: -200px;
-            left: -200px;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: var(--secondary-color);
-            opacity: 0.05;
-            z-index: 0;
-        }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        .about-image {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--secondary-color);
-            border-radius: var(--border-radius);
-            z-index: -1;
-        }
-        .about-image img {
-            width: 100%;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        .about-text h2 {
-            margin-bottom: 2rem;
-        }
-        .about-features {
-            margin: 25px 0;
-        }
-        .about-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .about-feature i {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            min-width: 30px;
-        }
-
-        /* Projects Section - Modernized */
+        /* Projects Section */
         #projects { 
             background-color: var(--light-color); 
-            position: relative;
         }
-        
-        /* Projects Carousel */
         .projects-carousel {
             position: relative;
-            overflow: hidden;
-            padding: 20px 0 60px;
         }
-        
         .carousel-container {
             position: relative;
             overflow: hidden;
-            margin: 0 auto;
-            max-width: 1200px;
         }
-        
         .carousel-slides {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease-in-out;
             gap: 30px;
         }
-        
         .project-card {
             background: var(--white-color);
             border-radius: var(--border-radius);
@@ -454,64 +342,56 @@
             transition: all 0.4s ease;
             flex: 0 0 calc(33.333% - 20px);
             min-width: 300px;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        
+        body.dark-mode .project-card {
+            border-color: rgba(255,255,255,0.1);
+        }
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
         }
-        
         .project-img {
             height: 250px;
             overflow: hidden;
         }
-        
         .project-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
         .project-card:hover .project-img img {
             transform: scale(1.1);
         }
-        
         .project-info {
             padding: 30px;
         }
-        
         .project-info h3 {
             margin-bottom: 15px;
-            color: var(--primary-color);
         }
-        
         .project-meta {
             margin-top: 1.5rem;
             list-style: none;
             padding: 0;
         }
-        
         .project-meta li {
             margin-bottom: 10px;
             font-weight: 500;
             display: flex;
             align-items: center;
         }
-        
         .project-meta i {
             color: var(--secondary-color);
             margin-right: 10px;
             min-width: 25px;
         }
-        
         .carousel-controls {
             display: flex;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 40px;
             gap: 15px;
         }
-        
         .carousel-btn {
             width: 50px;
             height: 50px;
@@ -526,69 +406,88 @@
             border: none;
             font-size: 1.2rem;
         }
-        
+        body.dark-mode .carousel-btn {
+            color: var(--primary-color);
+            background: var(--dark-color);
+        }
         .carousel-btn:hover {
             background: var(--secondary-color);
             transform: scale(1.1);
         }
-        
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 10px;
-        }
-        
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(10, 37, 64, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .indicator.active {
-            background: var(--primary-color);
-            transform: scale(1.2);
-        }
-        
         .view-all-projects {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
-        /* Team Section - Modernized */
-        #team {
-            position: relative;
-            overflow: hidden;
+        /* Services Section */
+        #services { 
+            background-color: var(--white-color);
         }
-        #team::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: var(--accent-color);
-            opacity: 0.05;
-            z-index: 0;
+        .service-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        .service-intro p {
+            font-size: 1.1rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: all var(--transition-speed) ease;
+            border: 1px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary-color);
+        }
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            line-height: 1;
+        }
+        .service-title {
+            font-size: 1.6rem;
+        }
+        .service-desc {
+            margin-bottom: 15px;
+        }
+        .service-features {
+            padding-left: 20px;
+            list-style-type: '✓  ';
+        }
+        .service-features li {
+            margin-bottom: 8px;
+            padding-left: 10px;
+        }
+
+        /* Team Section */
+        #team {
+            background-color: var(--light-color);
         }
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            position: relative;
-            z-index: 1;
         }
         .team-subtitle {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin: 60px 0 40px;
             position: relative;
             padding-bottom: 15px;
-            color: var(--primary-color);
         }
         .team-subtitle::after {
             content: '';
@@ -605,18 +504,20 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow);
             transition: all var(--transition-speed) ease;
-            position: relative;
             padding: 20px;
         }
         .team-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
         .team-card.advisor {
             background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5f 100%);
             color: var(--white-color);
+        }
+        body.dark-mode .team-card.advisor {
+            background: linear-gradient(135deg, #3a506b 0%, #2c3e50 100%);
         }
         .team-card.advisor h4, 
         .team-card.advisor p, 
@@ -628,54 +529,46 @@
             font-weight: 600;
             display: block;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
-        
-        /* Updated Team Member Images - Circular */
         .team-card-img {
-            width: 180px;
-            height: 180px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 20px;
-            border: 5px solid rgba(78, 205, 196, 0.2);
+            border: 5px solid var(--white-color);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+        body.dark-mode .team-card-img {
+            border-color: var(--light-color);
+        }
         .team-card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform var(--transition-speed) ease;
         }
-        
         .team-card:hover .team-card-img img {
             transform: scale(1.1);
         }
-        
         .team-card-info { 
-            padding: 20px 0; 
-            position: relative;
-            z-index: 2;
+            padding: 15px 0 0; 
         }
-        
         .team-card-info h4 { 
-            font-size: 1.8rem; 
+            font-size: 1.6rem; 
             margin-bottom: 5px;
         }
-        
         .team-card-info p {
-             font-size: 0.95rem;
+             font-size: 0.9rem;
              line-height: 1.6;
         }
-        
         .team-socials {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
-        
         .team-socials a {
             color: var(--primary-color);
             font-size: 1rem;
@@ -686,15 +579,15 @@
             justify-content: center;
             border: 1px solid #eee;
             border-radius: 50%;
-            text-decoration: none;
             transition: all var(--transition-speed) ease;
         }
-        
+        body.dark-mode .team-socials a {
+            border-color: #4a5568;
+        }
         .team-card.advisor .team-socials a {
             color: var(--white-color);
             border-color: rgba(255,255,255,0.3);
         }
-        
         .team-socials a:hover {
             background-color: var(--secondary-color);
             color: var(--white-color);
@@ -702,21 +595,17 @@
             transform: translateY(-3px);
         }
 
-        /* Contact Section - Modernized */
+        /* Contact Section */
         #contact { 
-            background-color: var(--light-color); 
-            position: relative;
+            background-color: var(--white-color); 
         }
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 60px;
-            background-color: var(--white-color);
+            background-color: var(--light-color);
             padding: 50px;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            position: relative;
-            z-index: 1;
         }
         .contact-details .contact-item {
             display: flex;
@@ -725,20 +614,19 @@
             margin-bottom: 30px;
         }
         .contact-details .icon {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--secondary-color);
             padding-top: 5px;
             min-width: 40px;
+            text-align: center;
         }
         .contact-details h4 { 
-            font-size: 1.8rem; 
-            margin-bottom: 10px;
-            color: var(--primary-color);
+            font-size: 1.6rem; 
+            margin-bottom: 5px;
         }
         .contact-form h3 { 
-            font-size: 2.5rem; 
+            font-size: 2.2rem; 
             margin-bottom: 2rem;
-            color: var(--primary-color);
         }
         .form-group { 
             margin-bottom: 25px;
@@ -753,6 +641,12 @@
             font-family: var(--body-font);
             font-size: 1rem;
             transition: all 0.3s ease;
+            background-color: var(--white-color);
+            color: var(--dark-color);
+        }
+        body.dark-mode .form-group input, 
+        body.dark-mode .form-group textarea {
+            border-color: #4a5568;
         }
         .form-group input:focus, 
         .form-group textarea:focus {
@@ -774,20 +668,25 @@
         .form-group textarea:not(:placeholder-shown) + label {
             top: -10px;
             left: 12px;
-            background: white;
+            background: var(--light-color);
             padding: 0 8px;
             font-size: 0.85rem;
             color: var(--secondary-color);
         }
         
-        /* WhatsApp Button */
-        .whatsapp-btn {
+        /* Floating Social Buttons */
+        .floating-socials {
             position: fixed;
             bottom: 30px;
             right: 30px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .social-btn {
             width: 60px;
             height: 60px;
-            background-color: #25D366;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -795,45 +694,26 @@
             color: white;
             font-size: 1.8rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 999;
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
+            animation: pulse 2.5s infinite ease-in-out;
         }
-        .whatsapp-btn:hover {
+        .social-btn:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            animation-play-state: paused;
         }
+        .whatsapp-btn { background-color: #25D366; }
+        .facebook-btn { background-color: #1877F2; animation-delay: 0.5s; }
 
-        /* Facebook Button */
-        .facebook-btn {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: #4267B2;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 999;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        .facebook-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Stats Section - Redesigned */
+        /* Stats Section */
         #stats {
             background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5f 100%);
             color: var(--white-color);
             text-align: center;
-            padding: 60px 0;
+            padding: 80px 0;
+        }
+        body.dark-mode #stats {
+            background: linear-gradient(135deg, #3a506b 0%, #2c3e50 100%);
         }
         .stats-grid {
             display: grid;
@@ -842,25 +722,9 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        .stat-item {
-            padding: 25px 15px;
-            position: relative;
-            z-index: 1;
-        }
-        .stat-item::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            right: 0;
-            height: 70%;
-            width: 1px;
-            background: rgba(255, 255, 255, 0.2);
-        }
-        .stat-item:last-child::after {
-            display: none;
-        }
+        .stat-item { padding: 25px 15px; }
         .stat-number {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             font-family: var(--heading-font);
             margin-bottom: 10px;
@@ -873,24 +737,24 @@
             line-height: 1.3;
         }
 
-        /* Footer - Modernized */
+        /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5f 100%);
-            color: rgba(255, 255, 255, 0.8);
+            background: var(--primary-color);
+            color: rgba(255, 255, 255, 0.7);
             padding: 100px 0 30px;
-            position: relative;
+        }
+        body.dark-mode footer {
+            background: #171923;
         }
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 60px;
-            position: relative;
-            z-index: 1;
         }
         .footer-col h3 {
             color: var(--white-color);
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 10px;
@@ -903,20 +767,6 @@
             width: 50px;
             height: 3px;
             background-color: var(--secondary-color);
-        }
-        .footer-col .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        .footer-col .logo h1 { 
-            color: var(--white-color); 
-            font-size: 1.8rem;
-        }
-        .footer-col .logo span { 
-            color: var(--secondary-color); 
-            font-size: 1rem;
         }
         .footer-socials {
             display: flex;
@@ -932,7 +782,6 @@
             color: var(--white-color);
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
-            text-decoration: none;
             transition: all var(--transition-speed) ease;
             font-size: 1.2rem;
         }
@@ -940,111 +789,52 @@
             background-color: var(--secondary-color);
             transform: translateY(-3px);
         }
-        .footer-links { 
-            list-style: none; 
-            margin-top: 10px;
-        }
-        .footer-links li { 
-            margin-bottom: 15px; 
-            position: relative;
-            padding-left: 20px;
-        }
-        .footer-links li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 15px; }
         .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
             transition: all var(--transition-speed) ease;
-            display: block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         .footer-links a:hover {
             color: var(--secondary-color);
-            padding-left: 5px;
+            transform: translateX(5px);
+        }
+        .footer-links a i {
+            font-size: 0.8rem;
         }
         .copyright {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/dark-geometric.png');
-            opacity: 0.1;
-            pointer-events: none;
         }
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            h2 { font-size: 3.2rem; }
+            h2 { font-size: 3rem; }
             .hero-content h1 { font-size: 3.8rem; }
-            .project-card {
-                flex: 0 0 calc(33.333% - 20px);
-            }
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            .stat-text {
-                font-size: 1rem;
-            }
         }
 
         @media (max-width: 992px) {
-            section {
-                padding: 80px 0;
-            }
+            section { padding: 80px 0; }
             h2 { font-size: 2.8rem; }
             .hero-content h1 { font-size: 3.2rem; }
-            .about-grid, 
-            .contact-grid { 
-                grid-template-columns: 1fr; 
-                gap: 40px;
-            }
-            .project-slide-image { 
-                height: 400px; 
-            }
-            .team-subtitle {
-                font-size: 2.4rem;
-            }
-            .stat-item::after {
-                display: none;
-            }
+            .contact-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -1069,122 +859,49 @@
                 padding: 100px 30px 30px;
                 z-index: 1000;
             }
+            body.dark-mode .main-nav { background-color: var(--white-color); }
             .main-nav.active { right: 0; }
             .main-nav ul { flex-direction: column; }
-            .main-nav li {
-                margin: 0;
-                width: 100%;
-                margin-bottom: 15px;
-            }
-            .main-nav a {
-                display: block;
-                padding: 12px 0;
-                width: 100%;
-                font-size: 1.2rem;
-            }
+            .main-nav li { margin: 0 0 15px; }
+            .main-nav a { display: block; padding: 12px 0; width: 100%; font-size: 1.2rem; }
             .nav-close-btn {
                 position: absolute;
                 top: 30px;
                 right: 30px;
                 font-size: 2rem;
                 color: var(--primary-color);
+                cursor: pointer;
             }
-            .hero-content { 
-                text-align: center; 
-                padding: 0 20px;
-            }
+            .hero-content { text-align: center; }
             .hero-content h1 { font-size: 2.8rem; }
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
+            .hero-btns { flex-direction: column; align-items: center; }
             .footer-grid { grid-template-columns: 1fr; }
-            .section-title h2::after {
-                bottom: -12px;
-            }
-            .project-card {
-                flex: 0 0 calc(100% - 20px);
-            }
-            .team-card-img {
-                width: 150px;
-                height: 150px;
-            }
-            .stat-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .stat-number {
-                font-size: 2.2rem;
-            }
-            .stat-text {
-                font-size: 0.95rem;
-            }
-            /* Mobile adjustments for social buttons */
-            .whatsapp-btn, .facebook-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-            .facebook-btn {
-                bottom: 90px;
-            }
+            .project-card { flex: 0 0 calc(50% - 15px); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .floating-socials { bottom: 20px; right: 20px; }
+            .social-btn { width: 50px; height: 50px; font-size: 1.5rem; }
         }
 
         @media (max-width: 576px) {
-            .logo h1 {
-                font-size: 1.6rem;
-            }
-            .logo span {
-                font-size: 0.9rem;
-            }
-            .hero-content h1 { 
-                font-size: 2.4rem; 
-                line-height: 1.2;
-            }
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            .contact-grid {
-                padding: 30px 20px;
-            }
-            .project-slide-info {
-                padding: 30px 20px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            .stat-item {
-                padding: 15px;
-            }
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            .stat-text {
-                font-size: 1.1rem;
-            }
-            /* Mobile adjustments for social buttons */
-            .whatsapp-btn, .facebook-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-            .facebook-btn {
-                bottom: 85px;
-            }
+            .logo h1 { font-size: 1.6rem; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .contact-grid { padding: 30px 20px; }
+            .project-card { flex: 0 0 100%; }
+            .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/+8801615645860" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Facebook Button -->
-    <a href="https://www.facebook.com/ashroyengr" class="facebook-btn" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
+    <div class="floating-socials">
+        <a href="https://wa.me/+8801615645860" class="social-btn whatsapp-btn" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/ashroyengr" class="social-btn facebook-btn" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
 
     <header id="main-header">
         <div class="container header-content">
@@ -1193,462 +910,192 @@
                     <img src="https://i.imgur.com/12REMj2.jpeg" alt="Ashroy Logo">
                 </div>
                 <div>
-                    <h1>Ashroy</h1>
-                    <span>Architect's & Engineer's</span>
+                    <h1 data-lang-key="logoName">Ashroy</h1>
+                    <span data-lang-key="logoTagline">Architect's & Engineer's</span>
                 </div>
             </a>
             <nav class="main-nav">
-                <button class="mobile-menu-toggle nav-close-btn">&times;</button>
+                <button class="nav-close-btn">&times;</button>
                 <ul>
-                    <li><a href="#hero" class="active">হোম</a></li>
-                    <li><a href="#about">আমাদের সম্পর্কে</a></li>
-                    <li><a href="#projects">প্রকল্পসমূহ</a></li>
-                    <li><a href="#services">সেবাসমূহ</a></li>
-                    <li><a href="#team">টিম</a></li>
-                    <li><a href="#contact">যোগাযোগ</a></li>
+                    <li><a href="#hero" class="active" data-lang-key="navHome">হোম</a></li>
+                    <li><a href="#projects" data-lang-key="navProjects">প্রকল্পসমূহ</a></li>
+                    <li><a href="#services" data-lang-key="navServices">সেবাসমূহ</a></li>
+                    <li><a href="#team" data-lang-key="navTeam">টিম</a></li>
+                    <li><a href="#contact" data-lang-key="navContact">যোগাযোগ</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+            <div class="nav-controls">
+                <div class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="lang-toggle" id="langToggle" title="Change language">
+                    BN
+                </div>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
     </header>
 
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়...</h1>
-                <p>আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে।</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn">আমাদের প্রকল্প দেখুন</a>
-                    <a href="#contact" class="btn btn-accent">যোগাযোগ করুন</a>
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 data-lang-key="heroTitle">আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়...</h1>
+                    <p data-lang-key="heroSubtitle">আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে।</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn" data-lang-key="heroBtnProjects">আমাদের প্রকল্প দেখুন</a>
+                        <a href="#contact" class="btn btn-accent" data-lang-key="heroBtnContact">যোগাযোগ করুন</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="https://i.imgur.com/P4ZU1jN.jpeg" alt="Ashroy Architect's Office">
+        <section id="projects">
+            <div class="container">
+                <div class="section-title">
+                    <span data-lang-key="projectsSubTitle">আমাদের কাজ</span>
+                    <h2 data-lang-key="projectsTitle">প্রকল্পসমূহ</h2>
                 </div>
-                <div class="about-text">
-                    <span class="section-title-span" style="color:var(--secondary-color); font-weight:600;">আমাদের সম্পর্কে</span>
-                    <h2>আপনার আস্থার প্রতীক</h2>
-                    <p>আপনার বাড়িটি যেন সুন্দর, নান্দনিক ও বসবাসযোগ্য হয় - এটাই আমাদের লক্ষ্য। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে। আমরা বিশ্বাস করি আপনার সকল ধরনের প্রয়োজনে আমরা আপনার সন্তুষ্টি নিশ্চিত করতে সক্ষম।</p>
-                    
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <p>১০+ বছরের অভিজ্ঞতাসম্পন্ন পেশাদার দল</p>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <p>আধুনিক প্রযুক্তি ও উন্নত পদ্ধতির ব্যবহার</p>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <p>গ্রাহক সন্তুষ্টি নিশ্চিতকরণ</p>
-                        </div>
-                        <div class="about-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <p>সাশ্রয়ী মূল্যে সর্বোচ্চ মানের সেবা</p>
+                
+                <div class="projects-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slides">
+                            <!-- Project cards will be populated by JavaScript -->
                         </div>
                     </div>
                     
-                    <p>আমাদের অভিজ্ঞতা ও পারফরম্যান্সের মাধ্যমে আমরা আপনার আত্মবিশ্বাস অর্জন করতে প্রতিশ্রুতিবদ্ধ। ডিজাইন, ড্রয়িং এবং বাড়ি বানানোর সকল পরামর্শের জন্য আমাদের সাথে যোগাযোগ করুন।</p>
-                    <a href="#contact" class="btn">যোগাযোগ করুন</a>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" aria-label="Previous Project"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" aria-label="Next Project"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <div class="view-all-projects">
+                        <a href="https://www.facebook.com/ashroyengr" class="btn" target="_blank" data-lang-key="allProjectsBtn">সমস্ত চলমান প্রকল্প দেখুন</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects">
-        <div class="container">
-            <div class="section-title">
-                <span>আমাদের কাজ</span>
-                <h2>চলমান প্রকল্পসমূহ</h2>
-            </div>
-            
-            <!-- Projects Carousel -->
-            <div class="projects-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-slides">
-                        <!-- Project 1 -->
-                        <div class="project-card">
-                            <div class="project-img">
-                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="আধুনিক আবাসিক প্রকল্প">
-                            </div>
-                            <div class="project-info">
-                                <h3>আধুনিক আবাসিক প্রকল্প</h3>
-                                <p>মিরপুরের প্রাণকেন্দ্রে নির্মিতব্য একটি আধুনিক আবাসিক কমপ্লেক্স। ১০ তলা বিশিষ্ট এই ভবনে থাকবে ২০টি ফ্ল্যাট, সুইমিং পুল, জিমনেশিয়াম এবং সবুজ উদ্যান।</p>
-                                <ul class="project-meta">
-                                    <li><i class="fas fa-map-marker-alt"></i> অবস্থান: মিরপুর, ঢাকা</li>
-                                    <li><i class="fas fa-tasks"></i> অগ্রগতি: ৬৫%</li>
-                                    <li><i class="fas fa-calendar-check"></i> সমাপ্তির তারিখ: ডিসেম্বর ২০২৫</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 2 -->
-                        <div class="project-card">
-                            <div class="project-img">
-                                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="বিলাসবহুল ভিলা প্রকল্প">
-                            </div>
-                            <div class="project-info">
-                                <h3>বিলাসবহুল ভিলা প্রকল্প</h3>
-                                <p>গুলশানে নির্মিতব্য এই বিলাসবহুল ভিলাটি আধুনিক স্থাপত্য ও প্রাকৃতিক সৌন্দর্যের মেলবন্ধন। ৮,০০০ বর্গফুটের এই ভিলায় থাকবে ৫টি শোবার ঘর, হোম থিয়েটার এবং প্রাইভেট গার্ডেন।</p>
-                                <ul class="project-meta">
-                                    <li><i class="fas fa-map-marker-alt"></i> অবস্থান: গুলশান, ঢাকা</li>
-                                    <li><i class="fas fa-tasks"></i> অগ্রগতি: ৪০%</li>
-                                    <li><i class="fas fa-calendar-check"></i> সমাপ্তির তারিখ: মার্চ ২০২৬</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 3 -->
-                        <div class="project-card">
-                            <div class="project-img">
-                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="বাণিজ্যিক কমপ্লেক্স">
-                            </div>
-                            <div class="project-info">
-                                <h3>বাণিজ্যিক কমপ্লেক্স</h3>
-                                <p>উত্তরায় নির্মিতব্য ১৫ তলা বিশিষ্ট এই বাণিজ্যিক কমপ্লেক্সে থাকবে শপিং মল, অফিস স্পেস এবং ফুড কোর্ট। আধুনিক স্থাপত্যের সাথে পরিবেশবান্ধব ডিজাইনের সমন্বয় এই প্রকল্পের বিশেষত্ব।</p>
-                                <ul class="project-meta">
-                                    <li><i class="fas fa-map-marker-alt"></i> অবস্থান: উত্তরা, ঢাকা</li>
-                                    <li><i class="fas fa-tasks"></i> অগ্রগতি: ৫৫%</li>
-                                    <li><i class="fas fa-calendar-check"></i> সমাপ্তির তারিখ: অক্টোবর ২০২৫</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 4 -->
-                        <div class="project-card">
-                            <div class="project-img">
-                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="গ্রিন সিটি প্রকল্প">
-                            </div>
-                            <div class="project-info">
-                                <h3>গ্রিন সিটি প্রকল্প</h3>
-                                <p>পরিবেশবান্ধব এই আবাসিক প্রকল্পে থাকবে সবুজ উদ্যান, সৌর বিদ্যুৎ ব্যবস্থা এবং বৃষ্টির পানি সংরক্ষণ ব্যবস্থা। প্রকল্পটিতে থাকবে ১০০টি পরিবারের জন্য আবাসিক ইউনিট।</p>
-                                <ul class="project-meta">
-                                    <li><i class="fas fa-map-marker-alt"></i> অবস্থান: সাভার, ঢাকা</li>
-                                    <li><i class="fas fa-tasks"></i> অগ্রগতি: ৩০%</li>
-                                    <li><i class="fas fa-calendar-check"></i> সমাপ্তির তারিখ: আগস্ট ২০২৬</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 5 -->
-                        <div class="project-card">
-                            <div class="project-img">
-                                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="আধুনিক অফিস কমপ্লেক্স">
-                            </div>
-                            <div class="project-info">
-                                <h3>আধুনিক অফিস কমপ্লেক্স</h3>
-                                <p>মোহাম্মদপুরে নির্মিতব্য এই ১২ তলা অফিস কমপ্লেক্সে থাকবে আধুনিক সকল সুবিধা সহকারে ডিজাইন করা অফিস স্পেস, মিটিং রুম এবং ক্যাফেটেরিয়া।</p>
-                                <ul class="project-meta">
-                                    <li><i class="fas fa-map-marker-alt"></i> অবস্থান: মোহাম্মদপুর, ঢাকা</li>
-                                    <li><i class="fas fa-tasks"></i> অগ্রগতি: ৭০%</li>
-                                    <li><i class="fas fa-calendar-check"></i> সমাপ্তির তারিখ: জুন ২০২৫</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 6 -->
-                        <div class="project-card">
-                            <div class="project-img">
-                                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="স্মার্ট হাউজিং প্রকল্প">
-                            </div>
-                            <div class="project-info">
-                                <h3>স্মার্ট হাউজিং প্রকল্প</h3>
-                                <p>এই প্রকল্পে আধুনিক স্মার্ট হোম টেকনোলজির ব্যবহার করা হয়েছে। বাসিন্দারা তাদের মোবাইল ফোন দিয়ে ঘরের সকল সিস্টেম নিয়ন্ত্রণ করতে পারবেন।</p>
-                                <ul class="project-meta">
-                                    <li><i class="fas fa-map-marker-alt"></i> অবস্থান: বসুন্ধরা, ঢাকা</li>
-                                    <li><i class="fas fa-tasks"></i> অগ্রগতি: ৮০%</li>
-                                    <li><i class="fas fa-calendar-check"></i> সমাপ্তির তারিখ: এপ্রিল ২০২৫</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+        <section id="services">
+            <div class="container">
+                <div class="section-title">
+                    <span data-lang-key="servicesSubTitle">আমরা কি করি</span>
+                    <h2 data-lang-key="servicesTitle">আমাদের সেবাসমূহ</h2>
                 </div>
-                
-                <!-- Carousel Controls -->
-                <div class="carousel-controls">
-                    <button class="carousel-btn prev-btn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-btn next-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                <div class="service-intro">
+                    <p data-lang-key="servicesIntro">Ashroy Architects & Engineers – ডিজাইন থেকে ডেলিভারি পর্যন্ত, আপনাদের স্বপ্নের ঠিকানাকে বাস্তব করে তোলাই আমাদের অঙ্গীকার।</p>
                 </div>
-                
-                <!-- Indicators -->
-                <div class="carousel-indicators">
-                    <div class="indicator active" data-index="0"></div>
-                    <div class="indicator" data-index="1"></div>
-                    <div class="indicator" data-index="2"></div>
-                    <div class="indicator" data-index="3"></div>
-                    <div class="indicator" data-index="4"></div>
-                    <div class="indicator" data-index="5"></div>
-                </div>
-                
-                <!-- View All Projects Button -->
-                <div class="view-all-projects">
-                    <a href="https://www.facebook.com/ashroyengr" class="btn" target="_blank">সমস্ত চলমান প্রকল্প দেখুন</a>
+                <div class="services-grid">
+                    <!-- Service cards will be populated by JavaScript -->
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="services">
-        <div class="container">
-            <div class="section-title">
-                <span>আমরা কি করি</span>
-                <h2>আমাদের সেবাসমূহ</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
-                    <h3>স্থাপত্য ডিজাইন</h3>
-                    <p>আধুনিক ও কার্যকরী স্থাপত্য নকশা</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>জমির প্ল্যান</h3>
-                    <p>জমির সর্বোত্তম ব্যবহার নিশ্চিতকরণ</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-cube"></i></div>
-                    <h3>3D ভিউ</h3>
-                    <p>বাস্তবসম্মত 3D ভিজ্যুয়ালাইজেশন</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>কাঠামোগত ডিজাইন</h3>
-                    <p>নিরাপদ ও টেকসই কাঠামো নকশা</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-calculator"></i></div>
-                    <h3>অনুমান ও ব্যয়</h3>
-                    <p>সঠিক বাজেট ও ব্যয় পরিকল্পনা</p>
-                </div>
-                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
-                    <h3>অভ্যন্তরীণ ডিজাইন</h3>
-                    <p>আকর্ষণীয় ও আরামদায়ক ইন্টেরিয়র</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-tree"></i></div>
-                    <h3>ল্যান্ডস্কেপ ডিজাইন</h3>
-                    <p>সুন্দর ও ব্যবহার উপযোগী বাহ্যিক ডিজাইন</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-file-contract"></i></div>
-                    <h3>রাজউক অনুমোদন</h3>
-                    <p>সকল প্রকার অনুমোদন প্রক্রিয়াকরণ</p>
+        <section id="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">120+</div>
+                        <div class="stat-text" data-lang-key="statsProjects">সম্পন্ন প্রকল্প</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-text" data-lang-key="statsExperience">বছরের অভিজ্ঞতা</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-text" data-lang-key="statsProfessionals">পেশাদার কর্মী</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-text" data-lang-key="statsSatisfaction">গ্রাহক সন্তুষ্টি</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">120+</div>
-                    <div class="stat-text">সম্পন্ন প্রকল্প</div>
+        <section id="team">
+            <div class="container">
+                <div class="section-title">
+                    <span data-lang-key="teamSubTitle">আমাদের শক্তি</span>
+                    <h2 data-lang-key="teamTitle">বিশেষজ্ঞ টিম</h2>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-text">বছরের অভিজ্ঞতা</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-text">পেশাদার কর্মী</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-text">গ্রাহক সন্তুষ্টি</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="team">
-        <div class="container">
-            <div class="section-title">
-                <span>আমাদের শক্তি</span>
-                <h2>বিশেষজ্ঞ টিম</h2>
-            </div>
+                <h3 class="team-subtitle" data-lang-key="teamAdvisors">উপদেষ্টা মন্ডলী</h3>
+                <div class="team-grid" id="advisor-team-grid">
+                    <!-- Advisor cards will be populated by JavaScript -->
+                </div>
 
-            <h3 class="team-subtitle">উপদেষ্টা মন্ডলী</h3>
-            <div class="team-grid">
-                <div class="team-card advisor">
-                    <div class="team-card-img"><img src="https://i.imgur.com/9SH9l2R.jpeg" alt="Professor Dr. Md. Nazrul Islam"></div>
-                    <div class="team-card-info">
-                        <h4>Professor Dr. Md. Nazrul Islam</h4>
-                        <span class="designation">প্রধান উপদেষ্টা</span>
-                        <p>B.Sc. Engg (Civil, BUET), M.Sc. Engg (Structural, BUET), Ph.D (Structural, UKM), Life Fellow (IEB)</p>
-                        <div class="team-socials">
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                             <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-card advisor">
-                    <div class="team-card-img"><img src="https://i.imgur.com/VCZ87ZC.jpeg" alt="Engr. Md. Habibullah"></div>
-                    <div class="team-card-info">
-                        <h4>Engr. Md. Habibullah</h4>
-                        <span class="designation">বিশেষজ্ঞ উপদেষ্টা</span>
-                        <p>M.Engg. (Civil & Geotechnical), BUET. Superintending Engineer (Civil Engineering Office) BUET</p>
-                         <div class="team-socials">
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                             <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-card advisor">
-                    <div class="team-card-img"><img src="https://i.imgur.com/fHuJbWw.jpeg" alt="Engr. Shahidur Rahman"></div>
-                    <div class="team-card-info">
-                        <h4>Engr. Shahidur Rahman</h4>
-                        <span class="designation">বিশেষজ্ঞ উপদেষ্টা</span>
-                        <p>বিশিষ্ট অভিজ্ঞতা সম্পন্ন সিভিল ইঞ্জিনিয়ার। বিভিন্ন মেগা প্রকল্পে কাজের দীর্ঘ অভিজ্ঞতা রয়েছে।</p>
-                         <div class="team-socials">
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                             <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
+                <h3 class="team-subtitle" data-lang-key="teamDesign">ডিজাইন টিম</h3>
+                <div class="team-grid" id="design-team-grid">
+                    <!-- Design Team cards will be populated by JavaScript -->
                 </div>
             </div>
+        </section>
 
-            <h3 class="team-subtitle">ডিজাইন টিম</h3>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-card-img"><img src="https://i.imgur.com/3kdxCSV.jpeg" alt="Engr. Mahbobur Rahman Rasel"></div>
-                    <div class="team-card-info">
-                        <h4>Engr. Mahbobur Rahman Rasel</h4>
-                        <span class="designation">প্রতিষ্ঠাতা ও সিইও</span>
-                        <p>Ashroy Architect's & Engineer's এর সহ-প্রতিষ্ঠাতা ও প্রধান নির্বাহী কর্মকর্তা। ১০+ বছর অভিজ্ঞতাসম্পন্ন প্রকৌশলী।</p>
-                        <div class="team-socials">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <section id="contact">
+            <div class="container">
+                 <div class="section-title">
+                    <span data-lang-key="contactSubTitle">যোগাযোগ</span>
+                    <h2 data-lang-key="contactTitle">আমাদের সাথে কথা বলুন</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-details">
+                        <h3 data-lang-key="contactInfoTitle">তথ্য কেন্দ্র</h3>
+                        <p data-lang-key="contactInfoDesc">আপনার যেকোনো প্রশ্ন বা পরামর্শের জন্য আমাদের সাথে সরাসরি যোগাযোগ করুন। আমরা আপনার সেবায় নিয়োজিত।</p>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt icon"></i>
+                            <div>
+                                <h4 data-lang-key="contactOffice">অফিস</h4>
+                                <p data-lang-key="contactOfficeAddress1">হেড অফিস: ১ম তলা, হাউস-১০১, রোড-০৫, ব্লক-এ, মিরপুর-১২, ঢাকা-১২১৬</p>
+                                <p data-lang-key="contactOfficeAddress2">শাখা অফিস: রামপুর বাজার, কালিহাতী, টাঙ্গাইল</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt icon"></i>
+                            <div>
+                                <h4 data-lang-key="contactPhone">ফোন ও হোয়াটসঅ্যাপ</h4>
+                                <p>+8801615645860</p>
+                            </div>
+                        </div>
+                         <div class="contact-item">
+                            <i class="fas fa-envelope icon"></i>
+                            <div>
+                                <h4 data-lang-key="contactEmail">ইমেইল</h4>
+                                <p>ashroyengineers@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock icon"></i>
+                            <div>
+                                <h4 data-lang-key="contactHours">অফিস সময়</h4>
+                                <p data-lang-key="contactHoursSatThu">শনিবার - বৃহস্পতিবার: সকাল ৯টা - রাত ৮টা</p>
+                                <p data-lang-key="contactHoursFri">শুক্রবার: বিকাল ৩টা - রাত ৮টা</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-card-img"><img src="https://i.imgur.com/uoF7dNb.jpeg" alt="Arch. Emadul Haque"></div>
-                    <div class="team-card-info">
-                        <h4>Arch. Emadul Haque</h4>
-                        <span class="designation">সিনিয়র স্থপতি</span>
-                        <p>Ashroy Architect's & Engineer's এর সিনিয়র স্থপতি। আধুনিক ও কার্যকরী ডিজাইনে বিশেষ পারদর্শী। ১০+ বছর অভিজ্ঞতা।</p>
-                        <div class="team-socials">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                 <div class="team-card">
-                    <div class="team-card-img"><img src="https://i.imgur.com/NnlAlKT.jpeg" alt="Engr. Mushfiqur Rahman Akash"></div>
-                    <div class="team-card-info">
-                        <h4>Eng. Mushfiqur Rahman Akash</h4>
-                        <span class="designation">সিনিয়র সিভিল ইঞ্জিনিয়ার</span>
-                        <p>Ashroy Architect's & Engineer's এর সিনিয়র সিভিল ইঞ্জিনিয়ার। কাঠামোগত ডিজাইন ও নির্মাণ তত্ত্বাবধানে বিশেষ পারদর্শী।</p>
-                         <div class="team-socials">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-card-img"><img src="https://i.imgur.com/YP3Anzu.jpeg" alt="Engr. Rashidul Islam Rony"></div>
-                    <div class="team-card-info">
-                        <h4>Engr. Rashidul Islam Rony</h4>
-                        <span class="designation">সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার</span>
-                        <p>Ashroy Architect's & Engineer's এর সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার। বিদ্যুৎ ব্যবস্থা ডিজাইনে বিশেষজ্ঞ।</p>
-                        <div class="team-socials">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- New Team Member Added Here -->
-                <div class="team-card">
-                    <div class="team-card-img"><img src="https://i.imgur.com/SwNXcPp.jpeg" alt="Engr. Shamim Hossen"></div>
-                    <div class="team-card-info">
-                        <h4>Engr. Shamim Hossen</h4>
-                        <span class="designation">সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার</span>
-                        <p>Ashroy Architects & Engineers এর সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার। আধুনিক ও নিরাপদ বিদ্যুৎ ব্যবস্থা ডিজাইনে বিশেষজ্ঞ। ১০+ বছর অভিজ্ঞতা।</p>
-                        <div class="team-socials">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                    <div class="contact-form">
+                        <h3 data-lang-key="contactFormTitle">বার্তা পাঠান</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder=" " required>
+                                <label for="name" data-lang-key="formName">আপনার নাম</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" placeholder=" " required>
+                                <label for="phone" data-lang-key="formPhone">ফোন নাম্বার</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" rows="6" placeholder=" " required></textarea>
+                                <label for="message" data-lang-key="formMessage">আপনার বার্তা</label>
+                            </div>
+                            <button type="submit" class="btn" data-lang-key="formSubmit">বার্তা পাঠান</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-             <div class="section-title">
-                <span>যোগাযোগ</span>
-                <h2>আমাদের সাথে কথা বলুন</h2>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-details">
-                    <h3>তথ্য কেন্দ্র</h3>
-                    <p>আপনার যেকোনো প্রশ্ন বা পরামর্শের জন্য আমাদের সাথে সরাসরি যোগাযোগ করুন। আমরা আপনার সেবায় নিয়োজিত।</p>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt icon"></i>
-                        <div>
-                            <h4>অফিস</h4>
-                            <p>হেড অফিস: ১ম তলা, হাউস-১০১, রোড-০৫, ব্লক-এ, মিরপুর-১২, ঢাকা-১২১৬</p>
-                            <p>শাখা অফিস: রামপুর বাজার, কালিহাতী, টাঙ্গাইল</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt icon"></i>
-                        <div>
-                            <h4>ফোন ও হোয়াটসঅ্যাপ</h4>
-                            <p>+8801615645860</p>
-                        </div>
-                    </div>
-                     <div class="contact-item">
-                        <i class="fas fa-envelope icon"></i>
-                        <div>
-                            <h4>ইমেইল</h4>
-                            <p>ashroyengineers@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock icon"></i>
-                        <div>
-                            <h4>অফিস সময়</h4>
-                            <p>শনিবার - বৃহস্পতিবার: সকাল ৯টা - রাত ৮টা</p>
-                            <p>শুক্রবার: বিকাল ৩টা - রাত ৮টা</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>বার্তা পাঠান</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder=" " required>
-                            <label for="name">আপনার নাম</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" placeholder=" " required>
-                            <label for="phone">ফোন নাম্বার</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" rows="6" placeholder=" " required></textarea>
-                            <label for="message">আপনার বার্তা</label>
-                        </div>
-                        <button type="submit" class="btn">বার্তা পাঠান</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -1659,49 +1106,48 @@
                             <img src="https://i.imgur.com/12REMj2.jpeg" alt="Ashroy Logo">
                         </div>
                         <div>
-                            <h1>Ashroy</h1>
-                            <span>Architect's & Engineer's</span>
+                            <h1 data-lang-key="logoName">Ashroy</h1>
+                            <span data-lang-key="logoTagline">Architect's & Engineer's</span>
                         </div>
                     </a>
-                    <p>আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম।</p>
+                    <p data-lang-key="footerDesc">আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম।</p>
                      <div class="footer-socials">
-                        <a href="https://www.facebook.com/ashroyengr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/+8801615645860" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/ashroyengr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/+8801615645860" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                  <div class="footer-col">
-                    <h3>গুরুত্বপূর্ণ লিঙ্ক</h3>
+                    <h3 data-lang-key="footerLinksTitle">গুরুত্বপূর্ণ লিঙ্ক</h3>
                     <ul class="footer-links">
-                        <li><a href="#about">আমাদের সম্পর্কে</a></li>
-                        <li><a href="#projects">প্রকল্পসমূহ</a></li>
-                        <li><a href="#services">সেবাসমূহ</a></li>
-                        <li><a href="#team">আমাদের টিম</a></li>
-                        <li><a href="#contact">যোগাযোগ</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i><span data-lang-key="navProjects">প্রকল্পসমূহ</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="navServices">সেবাসমূহ</span></a></li>
+                        <li><a href="#team"><i class="fas fa-chevron-right"></i><span data-lang-key="navTeam">টিম</span></a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i><span data-lang-key="navContact">যোগাযোগ</span></a></li>
                     </ul>
                 </div>
                  <div class="footer-col">
-                    <h3>আমাদের সেবাসমূহ</h3>
+                    <h3 data-lang-key="footerServicesTitle">আমাদের সেবাসমূহ</h3>
                     <ul class="footer-links">
-                        <li><a href="#">স্থাপত্য ডিজাইন</a></li>
-                        <li><a href="#">জমির প্ল্যান</a></li>
-                        <li><a href="#">৩ডি ভিউ</a></li>
-                        <li><a href="#">কাঠামোগত ডিজাইন</a></li>
-                        <li><a href="#">অভ্যন্তরীণ ডিজাইন</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService1">স্থাপত্য ডিজাইন</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService2">জমির প্ল্যান</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService3">৩ডি ভিউ</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService4">কাঠামোগত ডিজাইন</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService5">অভ্যন্তরীণ ডিজাইন</span></a></li>
                     </ul>
                 </div>
                  <div class="footer-col">
-                    <h3>যোগাযোগ</h3>
+                    <h3 data-lang-key="navContact">যোগাযোগ</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> মিরপুর-১২, ঢাকা</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-lang-key="footerAddress">মিরপুর-১২, ঢাকা</span></li>
                         <li><a href="tel:+8801615645860"><i class="fas fa-phone-alt"></i> +8801615645860</a></li>
                         <li><a href="mailto:ashroyengineers@gmail.com"><i class="fas fa-envelope"></i> ashroyengineers@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; ২০২০ Ashroy Architect's & Engineer's. সকল স্বত্ব সংরক্ষিত।</p>
+                <p data-lang-key="footerCopyright">&copy; 2024 Ashroy Architect's & Engineer's. সকল স্বত্ব সংরক্ষিত।</p>
             </div>
         </div>
     </footer>
@@ -1709,17 +1155,290 @@
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         
-        // --- Header Scroll Effect ---
+        // --- LANGUAGE AND CONTENT MANAGEMENT ---
+        const languageData = {
+            bn: {
+                siteTitle: "Ashroy Architect's & Engineer's - আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়",
+                logoName: "Ashroy",
+                logoTagline: "Architect's & Engineer's",
+                navHome: "হোম",
+                navProjects: "প্রকল্পসমূহ",
+                navServices: "সেবাসমূহ",
+                navTeam: "টিম",
+                navContact: "যোগাযোগ",
+                heroTitle: "আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়...",
+                heroSubtitle: "আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে।",
+                heroBtnProjects: "আমাদের প্রকল্প দেখুন",
+                heroBtnContact: "যোগাযোগ করুন",
+                projectsSubTitle: "আমাদের কাজ",
+                projectsTitle: "প্রকল্পসমূহ",
+                allProjectsBtn: "সমস্ত চলমান প্রকল্প দেখুন",
+                servicesSubTitle: "আমরা কি করি",
+                servicesTitle: "আমাদের সেবাসমূহ",
+                servicesIntro: "Ashroy Architects & Engineers – ডিজাইন থেকে ডেলিভারি পর্যন্ত, আপনাদের স্বপ্নের ঠিকানাকে বাস্তব করে তোলাই আমাদের অঙ্গীকার।",
+                statsProjects: "সম্পন্ন প্রকল্প",
+                statsExperience: "বছরের অভিজ্ঞতা",
+                statsProfessionals: "পেশাদার কর্মী",
+                statsSatisfaction: "গ্রাহক সন্তুষ্টি",
+                teamSubTitle: "আমাদের শক্তি",
+                teamTitle: "বিশেষজ্ঞ টিম",
+                teamAdvisors: "উপদেষ্টা মন্ডলী",
+                teamDesign: "ডিজাইন টিম",
+                contactSubTitle: "যোগাযোগ",
+                contactTitle: "আমাদের সাথে কথা বলুন",
+                contactInfoTitle: "তথ্য কেন্দ্র",
+                contactInfoDesc: "আপনার যেকোনো প্রশ্ন বা পরামর্শের জন্য আমাদের সাথে সরাসরি যোগাযোগ করুন। আমরা আপনার সেবায় নিয়োজিত।",
+                contactOffice: "অফিস",
+                contactOfficeAddress1: "হেড অফিস: ১ম তলা, হাউস-১০১, রোড-০৫, ব্লক-এ, মিরপুর-১২, ঢাকা-১২১৬",
+                contactOfficeAddress2: "শাখা অফিস: রামপুর বাজার, কালিহাতী, টাঙ্গাইল",
+                contactPhone: "ফোন ও হোয়াটসঅ্যাপ",
+                contactEmail: "ইমেইল",
+                contactHours: "অফিস সময়",
+                contactHoursSatThu: "শনিবার - বৃহস্পতিবার: সকাল ৯টা - রাত ৮টা",
+                contactHoursFri: "শুক্রবার: বিকাল ৩টা - রাত ৮টা",
+                contactFormTitle: "বার্তা পাঠান",
+                formName: "আপনার নাম",
+                formPhone: "ফোন নাম্বার",
+                formMessage: "আপনার বার্তা",
+                formSubmit: "বার্তা পাঠান",
+                footerDesc: "আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম।",
+                footerLinksTitle: "গুরুত্বপূর্ণ লিঙ্ক",
+                footerServicesTitle: "আমাদের সেবাসমূহ",
+                footerService1: "স্থাপত্য ডিজাইন",
+                footerService2: "জমির প্ল্যান",
+                footerService3: "৩ডি ভিউ",
+                footerService4: "কাঠামোগত ডিজাইন",
+                footerService5: "অভ্যন্তরীণ ডিজাইন",
+                footerAddress: "মিরপুর-১২, ঢাকা",
+                footerCopyright: `&copy; ${new Date().getFullYear()} Ashroy Architect's & Engineer's. সকল স্বত্ব সংরক্ষিত।`,
+                formSubmissionAlert: "বার্তা পাঠানোর জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। জরুরী প্রয়োজনে সরাসরি আমাদের হোয়াটসঅ্যাপে মেসেজ দিন!",
+                projects: [
+                    { title: "আধুনিক আবাসিক প্রকল্প", desc: "মিরপুরের প্রাণকেন্দ্রে নির্মিতব্য একটি আধুনিক আবাসিক কমপ্লেক্স। ১০ তলা বিশিষ্ট এই ভবনে থাকবে ২০টি ফ্ল্যাট, সুইমিং পুল, জিমনেশিয়াম এবং সবুজ উদ্যান।", location: "মিরপুর, ঢাকা", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "বিলাসবহুল ভিলা প্রকল্প", desc: "গুলশানে নির্মিতব্য এই বিলাসবহুল ভিলাটি আধুনিক স্থাপত্য ও প্রাকৃতিক সৌন্দর্যের মেলবন্ধন। ৮,০০০ বর্গফুটের এই ভিলায় থাকবে ৫টি শোবার ঘর, হোম থিয়েটার এবং প্রাইভেট গার্ডেন।", location: "গুলশান, ঢাকা", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "বাণিজ্যিক কমপ্লেক্স", desc: "উত্তরায় নির্মিতব্য ১৫ তলা বিশিষ্ট এই বাণিজ্যিক কমপ্লেক্সে থাকবে শপিং মল, অফিস স্পেস এবং ফুড কোর্ট। আধুনিক স্থাপত্যের সাথে পরিবেশবান্ধব ডিজাইনের সমন্বয় এই প্রকল্পের বিশেষত্ব।", location: "উত্তরা, ঢাকা", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "গ্রিন সিটি প্রকল্প", desc: "পরিবেশবান্ধব এই আবাসিক প্রকল্পে থাকবে সবুজ উদ্যান, সৌর বিদ্যুৎ ব্যবস্থা এবং বৃষ্টির পানি সংরক্ষণ ব্যবস্থা। প্রকল্পটিতে থাকবে ১০০টি পরিবারের জন্য আবাসিক ইউনিট।", location: "সাভার, ঢাকা", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "আধুনিক অফিস কমপ্লেক্স", desc: "মোহাম্মদপুরে নির্মিতব্য এই ১২ তলা অফিস কমপ্লেক্সে থাকবে আধুনিক সকল সুবিধা সহকারে ডিজাইন করা অফিস স্পেস, মিটিং রুম এবং ক্যাফেটেরিয়া।", location: "মোহাম্মদপুর, ঢাকা", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "স্মার্ট হাউজিং প্রকল্প", desc: "এই প্রকল্পে আধুনিক স্মার্ট হোম টেকনোলজির ব্যবহার করা হয়েছে। বাসিন্দারা তাদের মোবাইল ফোন দিয়ে ঘরের সকল সিস্টেম নিয়ন্ত্রণ করতে পারবেন।", location: "বসুন্ধরা, ঢাকা", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+                ],
+                services: [
+                    { icon: '🏠', title: 'স্থাপত্য নকশা', desc: 'আবাসিক, বাণিজ্যিক ও শিল্প কারখানার জন্য আধুনিক ও কার্যকর ডিজাইন', features: ['ক্লায়েন্টের চাহিদা, বাজেট ও স্থানভেদে কাস্টমাইজড ডিজাইন', 'থ্রি-ডি ভিজ্যুয়ালাইজেশন ও ওয়াকথ্রু ভিডিও'] },
+                    { icon: '🧱', title: 'স্ট্রাকচারাল ডিজাইন', desc: 'নিরাপদ ও টেকসই স্ট্রাকচার ডিজাইন (RCC, Steel, Foundation etc.)', features: ['সরকার নির্ধারিত কোড এবং ইঞ্জিনিয়ারিং স্ট্যান্ডার্ড অনুযায়ী বিশ্লেষণ'] },
+                    { icon: '📐', title: 'প্ল্যান অনুমোদন ও অটোমেশন ড্রয়িংস', desc: 'রাজউক/পৌরসভা/সিটি কর্পোরেশন প্ল্যান সাবমিশন', features: ['অনুমোদনযোগ্য ম্যাপ, লেআউট প্ল্যান, সাইট প্ল্যান, ইলেকট্রিক ও স্যানিটারি ড্রয়িং'] },
+                    { icon: '🏗️', title: 'কন্সট্রাকশন সুপারভিশন ও বাস্তবায়ন', desc: 'নির্মাণ কাজের নিয়মিত তদারকি ও মান নিয়ন্ত্রণ', features: ['বিল্ডিং নির্মাণে লেবার, কাঁচামাল ও কনসালটেন্সি সার্ভিস'] },
+                    { icon: '💡', title: 'ইলেকট্রিক্যাল ও প্লাম্বিং ডিজাইন', desc: 'আধুনিক, নিরাপদ ও ব্যয়-সাশ্রয়ী ইলেকট্রিক্যাল ও স্যানিটারি ডিজাইন', features: ['লাইটিং, ফায়ার সেফটি, পানির সাপ্লাই ও স্যুয়ারেজ সিস্টেম'] },
+                    { icon: '🏞️', title: 'ল্যান্ডস্কেপ ও ইন্টেরিয়র ডিজাইন', desc: 'গার্ডেন, ছাদ বাগান ও বাইরের সৌন্দর্য বর্ধন', features: ['ঘরের ভেতরের ফার্নিচার, কালার থিম, ওয়ার্ডরোব, মডুলার কিচেন ডিজাইন'] }
+                ],
+                advisors: [
+                    { name: 'Professor Dr. Md. Nazrul Islam', designation: 'প্রধান উপদেষ্টা', details: 'B.Sc. Engg (Civil, BUET), M.Sc. Engg (Structural, BUET), Ph.D (Structural, UKM), Life Fellow (IEB)', img: 'https://i.imgur.com/9SH9l2R.jpeg' },
+                    { name: 'Engr. Md. Habibullah', designation: 'বিশেষজ্ঞ উপদেষ্টা', details: 'M.Engg. (Civil & Geotechnical), BUET. Superintending Engineer (Civil Engineering Office) BUET', img: 'https://i.imgur.com/VCZ87ZC.jpeg' },
+                    { name: 'Engr. Shahidur Rahman', designation: 'বিশেষজ্ঞ উপদেষ্টা', details: 'বিশিষ্ট অভিজ্ঞতা সম্পন্ন সিভিল ইঞ্জিনিয়ার। বিভিন্ন মেগা প্রকল্পে কাজের দীর্ঘ অভিজ্ঞতা রয়েছে।', img: 'https://i.imgur.com/fHuJbWw.jpeg' }
+                ],
+                designTeam: [
+                    { name: 'Engr. Mahbobur Rahman Rasel', designation: 'প্রতিষ্ঠাতা ও সিইও', details: "Ashroy Architect's & Engineer's এর সহ-প্রতিষ্ঠাতা ও প্রধান নির্বাহী কর্মকর্তা। ১০+ বছর অভিজ্ঞতাসম্পন্ন প্রকৌশলী।", img: 'https://i.imgur.com/3kdxCSV.jpeg' },
+                    { name: 'Arch. Emadul Haque', designation: 'সিনিয়র স্থপতি', details: "Ashroy Architect's & Engineer's এর সিনিয়র স্থপতি। আধুনিক ও কার্যকরী ডিজাইনে বিশেষ পারদর্শী। ১০+ বছর অভিজ্ঞতা।", img: 'https://i.imgur.com/uoF7dNb.jpeg' },
+                    { name: 'Eng. Mushfiqur Rahman Akash', designation: 'সিনিয়র সিভিল ইঞ্জিনিয়ার', details: "Ashroy Architect's & Engineer's এর সিনিয়র সিভিল ইঞ্জিনিয়ার। কাঠামোগত ডিজাইন ও নির্মাণ তত্ত্বাবধানে বিশেষ পারদর্শী।", img: 'https://i.imgur.com/NnlAlKT.jpeg' },
+                    { name: 'Engr. Rashidul Islam Rony', designation: 'সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার', details: "Ashroy Architect's & Engineer's এর সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার। বিদ্যুৎ ব্যবস্থা ডিজাইনে বিশেষজ্ঞ।", img: 'https://i.imgur.com/YP3Anzu.jpeg' },
+                    { name: 'Engr. Shamim Hossen', designation: 'সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার', details: "Ashroy Architects & Engineers এর সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার। আধুনিক ও নিরাপদ বিদ্যুৎ ব্যবস্থা ডিজাইনে বিশেষজ্ঞ। ১০+ বছর অভিজ্ঞতা।", img: 'https://i.imgur.com/SwNXcPp.jpeg' }
+                ]
+            },
+            en: {
+                siteTitle: "Ashroy Architect's & Engineer's - Where the Foundation of a Safe Home is Laid",
+                logoName: "Ashroy",
+                logoTagline: "Architect's & Engineer's",
+                navHome: "Home",
+                navProjects: "Projects",
+                navServices: "Services",
+                navTeam: "Team",
+                navContact: "Contact",
+                heroTitle: "Ashroy, Where the Foundation of a Safe Home is Laid...",
+                heroSubtitle: "We believe your home is not just a place to live, but a creative work of art. We are by your side to fulfill your dreams.",
+                heroBtnProjects: "View Our Projects",
+                heroBtnContact: "Contact Us",
+                projectsSubTitle: "Our Work",
+                projectsTitle: "Projects",
+                allProjectsBtn: "View All Ongoing Projects",
+                servicesSubTitle: "What We Do",
+                servicesTitle: "Our Services",
+                servicesIntro: "Ashroy Architects & Engineers – From design to delivery, our commitment is to make your dream address a reality.",
+                statsProjects: "Completed Projects",
+                statsExperience: "Years of Experience",
+                statsProfessionals: "Professional Staff",
+                statsSatisfaction: "Client Satisfaction",
+                teamSubTitle: "Our Strength",
+                teamTitle: "Expert Team",
+                teamAdvisors: "Board of Advisors",
+                teamDesign: "Design Team",
+                contactSubTitle: "Get in Touch",
+                contactTitle: "Talk to Us",
+                contactInfoTitle: "Information Center",
+                contactInfoDesc: "For any questions or suggestions, please contact us directly. We are dedicated to your service.",
+                contactOffice: "Office",
+                contactOfficeAddress1: "Head Office: 1st Floor, House-101, Road-05, Block-A, Mirpur-12, Dhaka-1216",
+                contactOfficeAddress2: "Branch Office: Rampur Bazar, Kalihati, Tangail",
+                contactPhone: "Phone & WhatsApp",
+                contactEmail: "Email",
+                contactHours: "Office Hours",
+                contactHoursSatThu: "Saturday - Thursday: 9 AM - 8 PM",
+                contactHoursFri: "Friday: 3 PM - 8 PM",
+                contactFormTitle: "Send a Message",
+                formName: "Your Name",
+                formPhone: "Phone Number",
+                formMessage: "Your Message",
+                formSubmit: "Send Message",
+                footerDesc: "The architect of your dream home. We believe your home is not just a place to live, but a creative work of art.",
+                footerLinksTitle: "Quick Links",
+                footerServicesTitle: "Our Services",
+                footerService1: "Architectural Design",
+                footerService2: "Land Planning",
+                footerService3: "3D Views",
+                footerService4: "Structural Design",
+                footerService5: "Interior Design",
+                footerAddress: "Mirpur-12, Dhaka",
+                footerCopyright: `&copy; ${new Date().getFullYear()} Ashroy Architect's & Engineer's. All rights reserved.`,
+                formSubmissionAlert: "Thank you for your message! We will contact you shortly. For urgent needs, please message us directly on WhatsApp!",
+                projects: [
+                    { title: "Modern Residential Project", desc: "A modern residential complex under construction in the heart of Mirpur. This 10-story building will feature 20 flats, a swimming pool, a gymnasium, and a green garden.", location: "Mirpur, Dhaka", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Luxury Villa Project", desc: "This luxury villa in Gulshan is a blend of modern architecture and natural beauty. The 8,000 sq. ft. villa will have 5 bedrooms, a home theater, and a private garden.", location: "Gulshan, Dhaka", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Commercial Complex", desc: "This 15-story commercial complex in Uttara will include a shopping mall, office spaces, and a food court. The project features a combination of modern architecture and eco-friendly design.", location: "Uttara, Dhaka", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Green City Project", desc: "This eco-friendly residential project will feature green parks, a solar power system, and a rainwater harvesting system. The project will have residential units for 100 families.", location: "Savar, Dhaka", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Modern Office Complex", desc: "This 12-story office complex in Mohammadpur will feature office spaces, meeting rooms, and a cafeteria designed with all modern amenities.", location: "Mohammadpur, Dhaka", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Smart Housing Project", desc: "This project utilizes modern smart home technology. Residents will be able to control all home systems with their mobile phones.", location: "Bashundhara, Dhaka", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+                ],
+                services: [
+                    { icon: '🏠', title: 'Architectural Design', desc: 'Modern and effective designs for residential, commercial, and industrial buildings.', features: ['Customized designs based on client needs, budget, and location', '3D visualization and walkthrough videos'] },
+                    { icon: '🧱', title: 'Structural Design', desc: 'Safe and durable structural design (RCC, Steel, Foundation etc.).', features: ['Analysis according to government-prescribed codes and engineering standards'] },
+                    { icon: '📐', title: 'Plan Approval & Automation Drawings', desc: 'Plan submission to RAJUK/Municipality/City Corporation.', features: ['Approvable maps, layout plans, site plans, electric, and sanitary drawings'] },
+                    { icon: '🏗️', title: 'Construction Supervision & Implementation', desc: 'Regular supervision and quality control of construction work.', features: ['Labor, raw materials, and consultancy services for building construction'] },
+                    { icon: '💡', title: 'Electrical & Plumbing Design', desc: 'Modern, safe, and cost-effective electrical and sanitary designs.', features: ['Lighting, fire safety, water supply, and sewerage systems'] },
+                    { icon: '🏞️', title: 'Landscape & Interior Design', desc: 'Gardens, rooftop gardens, and exterior beautification.', features: ['Interior furniture, color themes, wardrobes, and modular kitchen designs'] }
+                ],
+                advisors: [
+                    { name: 'Professor Dr. Md. Nazrul Islam', designation: 'Chief Advisor', details: 'B.Sc. Engg (Civil, BUET), M.Sc. Engg (Structural, BUET), Ph.D (Structural, UKM), Life Fellow (IEB)', img: 'https://i.imgur.com/9SH9l2R.jpeg' },
+                    { name: 'Engr. Md. Habibullah', designation: 'Expert Advisor', details: 'M.Engg. (Civil & Geotechnical), BUET. Superintending Engineer (Civil Engineering Office) BUET', img: 'https://i.imgur.com/VCZ87ZC.jpeg' },
+                    { name: 'Engr. Shahidur Rahman', designation: 'Expert Advisor', details: 'A highly experienced civil engineer with extensive experience in various mega-projects.', img: 'https://i.imgur.com/fHuJbWw.jpeg' }
+                ],
+                designTeam: [
+                    { name: 'Engr. Mahbobur Rahman Rasel', designation: 'Founder & CEO', details: "Co-founder & CEO of Ashroy Architect's & Engineer's. An engineer with 10+ years of experience.", img: 'https://i.imgur.com/3kdxCSV.jpeg' },
+                    { name: 'Arch. Emadul Haque', designation: 'Senior Architect', details: "Senior Architect at Ashroy Architect's & Engineer's. Specializes in modern and functional design. 10+ years of experience.", img: 'https://i.imgur.com/uoF7dNb.jpeg' },
+                    { name: 'Eng. Mushfiqur Rahman Akash', designation: 'Senior Civil Engineer', details: "Senior Civil Engineer at Ashroy Architect's & Engineer's. Specializes in structural design and construction supervision.", img: 'https://i.imgur.com/NnlAlKT.jpeg' },
+                    { name: 'Engr. Rashidul Islam Rony', designation: 'Senior Electrical Engineer', details: "Senior Electrical Engineer at Ashroy Architect's & Engineer's. Specializes in electrical system design.", img: 'https://i.imgur.com/YP3Anzu.jpeg' },
+                    { name: 'Engr. Shamim Hossen', designation: 'Senior Electrical Engineer', details: "Senior Electrical Engineer at Ashroy Architects & Engineers. Specializes in modern and safe electrical system design. 10+ years of experience.", img: 'https://i.imgur.com/SwNXcPp.jpeg' }
+                ]
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'bn';
+
+        const setLanguage = (lang) => {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            document.documentElement.lang = lang;
+            
+            const elements = document.querySelectorAll('[data-lang-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (languageData[lang][key]) {
+                    el.innerHTML = languageData[lang][key];
+                }
+            });
+
+            // Update form labels and placeholders
+            const formLabels = {
+                name: document.querySelector('label[for="name"]'),
+                phone: document.querySelector('label[for="phone"]'),
+                message: document.querySelector('label[for="message"]'),
+            };
+            if(formLabels.name) formLabels.name.textContent = languageData[lang].formName;
+            if(formLabels.phone) formLabels.phone.textContent = languageData[lang].formPhone;
+            if(formLabels.message) formLabels.message.textContent = languageData[lang].formMessage;
+
+            // Update dynamic content
+            populateProjects(lang);
+            populateServices(lang);
+            populateTeam(lang);
+
+            // Update lang toggle button text
+            langToggle.textContent = lang.toUpperCase();
+        };
+
+        const populateProjects = (lang) => {
+            const container = document.querySelector('.carousel-slides');
+            container.innerHTML = '';
+            languageData[lang].projects.forEach(p => {
+                const card = `
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="${p.img}" alt="${p.title}">
+                        </div>
+                        <div class="project-info">
+                            <h3>${p.title}</h3>
+                            <p>${p.desc}</p>
+                            <ul class="project-meta">
+                                <li><i class="fas fa-map-marker-alt"></i> ${p.location}</li>
+                            </ul>
+                        </div>
+                    </div>`;
+                container.innerHTML += card;
+            });
+            // Re-initialize carousel after populating
+            initCarousel();
+        };
+        
+        const populateServices = (lang) => {
+            const container = document.querySelector('.services-grid');
+            container.innerHTML = '';
+            languageData[lang].services.forEach(s => {
+                const features = s.features.map(f => `<li>${f}</li>`).join('');
+                const card = `
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">${s.icon}</div>
+                            <h3 class="service-title">${s.title}</h3>
+                        </div>
+                        <p class="service-desc">${s.desc}</p>
+                        <ul class="service-features">${features}</ul>
+                    </div>`;
+                container.innerHTML += card;
+            });
+        };
+
+        const populateTeam = (lang) => {
+            const advisorContainer = document.getElementById('advisor-team-grid');
+            const designTeamContainer = document.getElementById('design-team-grid');
+            advisorContainer.innerHTML = '';
+            designTeamContainer.innerHTML = '';
+
+            const createTeamCard = (member, isAdvisor = false) => `
+                <div class="team-card ${isAdvisor ? 'advisor' : ''}">
+                    <div class="team-card-img"><img src="${member.img}" alt="${member.name}"></div>
+                    <div class="team-card-info">
+                        <h4>${member.name}</h4>
+                        <span class="designation">${member.designation}</span>
+                        <p>${member.details}</p>
+                        <div class="team-socials">
+                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                             <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>`;
+
+            languageData[lang].advisors.forEach(m => {
+                advisorContainer.innerHTML += createTeamCard(m, true);
+            });
+            languageData[lang].designTeam.forEach(m => {
+                designTeamContainer.innerHTML += createTeamCard(m, false);
+            });
+        };
+
+        // --- UI INTERACTIONS ---
+
+        // Header Scroll Effect
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // --- Mobile Navigation ---
+        // Mobile Navigation
         const nav = document.querySelector('.main-nav');
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const navCloseBtn = document.querySelector('.nav-close-btn');
@@ -1734,15 +1453,11 @@
         // Active nav link on scroll
         const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.main-nav a');
-
         window.addEventListener('scroll', () => {
             let current = '';
-            
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 200)) {
+                if (pageYOffset >= (sectionTop - 150)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1755,75 +1470,104 @@
             });
         });
 
-        // Form submission
-        const contactForm = document.querySelector('.contact-form form');
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('জরুরী প্রয়োজনে সরাসরি আমাদের হুয়াটসাপে মেসেজ দিন! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
+            alert(languageData[currentLang].formSubmissionAlert);
             contactForm.reset();
         });
 
-        // Service card animations
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
-        
-        // Projects Carousel Functionality
-        const carouselSlides = document.querySelector('.carousel-slides');
-        const slides = document.querySelectorAll('.project-card');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        const indicators = document.querySelectorAll('.indicator');
-        let currentIndex = 0;
-        const slideCount = slides.length;
-        const slideWidth = slides[0].offsetWidth + 30; // Width + gap
-        
-        // Initialize carousel
-        function updateCarousel() {
-            carouselSlides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        // Projects Carousel
+        let carouselInitialized = false;
+        function initCarousel() {
+            const carouselSlides = document.querySelector('.carousel-slides');
+            if (!carouselSlides) return;
+            const slides = carouselSlides.querySelectorAll('.project-card');
+            if (slides.length === 0) return;
+
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+            const slideCount = slides.length;
             
-            // Update indicators
-            indicators.forEach((indicator, index) => {
-                if (index === currentIndex) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
+            function getVisibleSlidesCount() {
+                if (window.innerWidth <= 576) return 1;
+                if (window.innerWidth <= 768) return 2;
+                return 3;
+            }
+
+            function updateCarousel() {
+                const visibleSlides = getVisibleSlidesCount();
+                const maxIndex = slideCount - visibleSlides;
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                if (currentIndex < 0) currentIndex = 0;
+                
+                const slideWidth = slides[0].offsetWidth + 30; // card width + gap
+                carouselSlides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                const visibleSlides = getVisibleSlidesCount();
+                if (currentIndex < slideCount - visibleSlides) {
+                    currentIndex++;
+                    updateCarousel();
                 }
             });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+            
+            if (!carouselInitialized) {
+                window.addEventListener('resize', updateCarousel);
+                setInterval(() => {
+                    const visibleSlides = getVisibleSlidesCount();
+                    currentIndex = (currentIndex + 1) % (slideCount - visibleSlides + 1);
+                    updateCarousel();
+                }, 5000);
+                carouselInitialized = true;
+            }
+
+            updateCarousel();
+        }
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) body.classList.add(savedTheme);
+        
+        function updateThemeIcon() {
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
         }
         
-        // Next slide
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateCarousel();
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark-mode' : '');
+            updateThemeIcon();
         });
-        
-        // Previous slide
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-            updateCarousel();
-        });
-        
-        // Indicator click
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => {
-                currentIndex = parseInt(indicator.getAttribute('data-index'));
-                updateCarousel();
-            });
-        });
-        
-        // Auto slide
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateCarousel();
-        }, 5000);
 
+        // Language Toggle
+        const langToggle = document.getElementById('langToggle');
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'bn' ? 'en' : 'bn';
+            setLanguage(newLang);
+        });
+
+        // --- INITIALIZE APP ---
+        updateThemeIcon();
+        setLanguage(currentLang);
     });
     </script>
 
