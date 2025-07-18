@@ -7,489 +7,518 @@
     <link rel="icon" href="https://i.imgur.com/12REMj2.jpeg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* CSS Custom Properties (Variables) */
         :root {
-            --primary-color: #0a2540;
-            --secondary-color: #4ECDC4;
-            --accent-color: #FF6B6B;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --text-color: #5a6a7b;
+            --primary-color: #1a56db;
+            --secondary-color: #0e2a47;
+            --accent-color: #f59e0b;
+            --light-bg-color: #f8fafc;
+            --dark-bg-color: #0e2a47;
+            --text-color-light: #4b5563;
+            --text-color-dark: #e5e7eb;
+            --heading-color-light: #111827;
+            --heading-color-dark: #f9fafb;
             --white-color: #ffffff;
-            --heading-font: 'Teko', sans-serif;
-            --body-font: 'Hind Siliguri', sans-serif;
+            --card-bg-light: #ffffff;
+            --card-bg-dark: #1e293b;
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Poppins', sans-serif;
             --transition-speed: 0.4s;
             --border-radius: 12px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            --shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --section-spacing: 120px;
         }
 
-        /* Dark Mode Variables */
         body.dark-mode {
-            --primary-color: #e2e8f0;
-            --secondary-color: #4fd1c5;
-            --accent-color: #f56565;
-            --light-color: #1a202c;
-            --dark-color: #e2e8f0;
-            --text-color: #a0aec0;
-            --white-color: #2d3748;
+            --light-bg-color: #0e2a47;
+            --card-bg-light: #1e293b;
+            --heading-color-light: #f9fafb;
+            --text-color-light: #e5e7eb;
         }
 
         /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--body-font);
-            color: var(--text-color);
-            background-color: var(--white-color);
-            line-height: 1.7;
+            color: var(--text-color-light);
+            background-color: var(--light-bg-color);
+            line-height: 1.8;
             overflow-x: hidden;
             transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         /* Container */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { width: 90%; max-width: 1280px; margin: 0 auto; }
 
-        /* Headings and Text */
+        /* Typography */
         h1, h2, h3, h4 {
             font-family: var(--heading-font);
-            color: var(--primary-color);
+            color: var(--heading-color-light);
             font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: 1px;
-            transition: color var(--transition-speed);
+            line-height: 1.3;
         }
-
-        h2 { font-size: 3.5rem; }
-        h3 { font-size: 2.2rem; }
-        p { margin-bottom: 1rem; }
+        h2 { font-size: 3rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.8rem; }
+        p { margin-bottom: 1.5rem; font-size: 1.05rem; }
         a { text-decoration: none; color: inherit; }
 
         /* Section Styling */
-        section {
-            padding: 100px 0;
-            overflow: hidden;
-        }
-
+        section { padding: var(--section-spacing) 0; overflow: hidden; }
         .section-title {
             text-align: center;
             margin-bottom: 70px;
-            position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
         .section-title span {
-            color: var(--secondary-color);
-            font-family: var(--body-font);
+            color: var(--accent-color);
             font-weight: 600;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.1rem;
-            text-transform: uppercase;
             letter-spacing: 2px;
-        }
-        
-        .section-title h2 {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary-color);
-            border-radius: 2px;
+            text-transform: uppercase;
+            font-family: var(--body-font);
         }
         
         /* Buttons */
         .btn {
             display: inline-block;
             padding: 14px 38px;
-            background-color: var(--secondary-color);
-            color: #fff;
-            border: 2px solid var(--secondary-color);
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: 2px solid var(--accent-color);
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all var(--transition-speed) ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            font-family: var(--body-font);
         }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transition: width 0.5s ease, height 0.5s ease;
-            z-index: -1;
-        }
-
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-color: transparent;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+        }
+        .btn-light {
+            background: var(--white-color);
+            color: var(--secondary-color);
+            border-color: var(--white-color);
+        }
+        .btn-light:hover {
+            background: transparent;
+            color: var(--white-color);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
         }
 
-        .btn:hover::before {
-            width: 250px;
-            height: 250px;
-        }
-        
-        .btn-accent {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-        
         /* Header */
         #main-header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 0; left: 0; width: 100%;
             z-index: 1000;
-            padding: 15px 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            padding: 25px 0;
+            background-color: var(--secondary-color);
             transition: all var(--transition-speed) ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        body.dark-mode #main-header {
-            background-color: rgba(45, 55, 72, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         #main-header.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            background-color: var(--secondary-color);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        body.dark-mode #main-header.scrolled {
+            background-color: var(--secondary-color);
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
         }
+        .logo { display: flex; align-items: center; gap: 15px; }
         .logo-img {
-            width: 55px;
-            height: 55px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             overflow: hidden;
+            background: var(--accent-color);
+            padding: 5px;
         }
-        .logo-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .logo-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 50%;
         }
         .logo h1 {
             margin: 0;
             font-size: 1.8rem;
-            color: var(--primary-color);
+            color: var(--white-color);
             line-height: 1;
+            font-family: var(--heading-font);
         }
         .logo span { 
-            color: var(--secondary-color);
+            color: var(--accent-color);
             display: block;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            margin-top: 3px;
+            margin-top: 5px;
+            letter-spacing: 1px;
         }
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-        }
+        .main-nav ul { display: flex; list-style: none; }
         .main-nav li { margin-left: 35px; }
         .main-nav a {
-            color: var(--dark-color);
+            color: var(--white-color);
             font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
             position: relative;
             padding-bottom: 5px;
-            transition: color 0.3s ease;
         }
-        .main-nav a::after {
+        .main-nav a:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--secondary-color);
-            transition: width var(--transition-speed) ease;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
         }
-        .main-nav a:hover, 
-        .main-nav a.active {
-            color: var(--secondary-color);
-        }
-        .main-nav a:hover::after, 
-        .main-nav a.active::after {
-            width: 100%;
-        }
-        .mobile-menu-toggle { display: none; }
-
-        /* Theme and Language Controls */
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-left: 20px;
-        }
+        .main-nav a:hover:after, .main-nav a.active:after { width: 100%; }
+        .main-nav a:hover, .main-nav a.active { color: var(--accent-color); }
+        .mobile-menu-toggle, .nav-close-btn { display: none; }
+        .nav-controls { display: flex; align-items: center; gap: 15px; margin-left: 20px; }
         .theme-toggle, .lang-toggle {
-            width: 40px;
-            height: 40px;
+            width: 42px; height: 42px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--light-color);
-            color: var(--primary-color);
+            display: flex; align-items: center; justify-content: center;
+            background-color: rgba(255,255,255,0.15);
+            color: var(--white-color);
             cursor: pointer;
             transition: all var(--transition-speed) ease;
-            border: 1px solid transparent;
         }
         .theme-toggle:hover, .lang-toggle:hover {
-            background-color: var(--secondary-color);
-            color: white;
-            transform: rotate(15deg);
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            transform: scale(1.1);
         }
-        .lang-toggle {
-            font-family: var(--heading-font);
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
+        .lang-toggle { font-family: var(--body-font); font-size: 1.1rem; font-weight: 600; }
 
         /* Hero Section */
         #hero {
-            background: linear-gradient(135deg, rgba(10, 37, 64, 0.9) 0%, rgba(78, 205, 196, 0.8) 100%), 
-                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 100vh;
+            background: linear-gradient(105deg, rgba(26, 86, 219, 0.9) 0%, rgba(14, 42, 71, 0.85) 100%), url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             color: var(--white-color);
-            padding-top: 80px;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
         }
-        .hero-content {
-            max-width: 750px;
-            animation: fadeInUp 1s ease-out;
+        #hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f59e0b' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        .hero-content { 
+            max-width: 900px; 
+            text-align: center; 
+            margin: 0 auto; 
+            position: relative;
+            z-index: 2;
         }
         .hero-content h1 {
-            font-size: 4.2rem;
+            font-size: 4.5rem;
             color: var(--white-color);
             margin-bottom: 1.5rem;
-            line-height: 1.1;
-            text-transform: uppercase;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
         }
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2.5rem;
             color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
+        .hero-btns { display: flex; gap: 20px; justify-content: center; }
 
-        /* Projects Section */
-        #projects { 
-            background-color: var(--light-color); 
-        }
-        .projects-carousel {
-            position: relative;
-        }
-        .carousel-container {
+        /* Services Section */
+        #services { 
+            background-color: var(--light-bg-color); 
             position: relative;
             overflow: hidden;
         }
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
-        .project-card {
-            background: var(--white-color);
+        .service-card {
+            background-color: var(--card-bg-light);
             border-radius: var(--border-radius);
+            padding: 40px 30px;
+            transition: all var(--transition-speed) ease;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
             overflow: hidden;
+            z-index: 1;
+        }
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.05;
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+        .service-card:hover:before {
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .service-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+        .service-title { 
+            font-size: 1.5rem; 
+            margin-bottom: 15px; 
+            color: var(--heading-color-light);
+        }
+        .service-desc {
+            color: var(--text-color-light);
+            font-size: 1.05rem;
+        }
+        
+        /* Projects Section */
+        #projects { 
+            background-color: var(--light-bg-color);
+            position: relative;
+        }
+        #projects:before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-color);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .projects-carousel { position: relative; }
+        .carousel-container { position: relative; overflow: hidden; }
+        .carousel-slides { 
+            display: flex; 
+            transition: transform 0.5s ease-in-out; 
+            gap: 30px; 
+            padding: 10px 0;
+        }
+        .project-card {
+            background: var(--card-bg-light);
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: all 0.4s ease;
             flex: 0 0 calc(33.333% - 20px);
             min-width: 300px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        body.dark-mode .project-card {
-            border-color: rgba(255,255,255,0.1);
-        }
-        .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-        }
-        .project-img {
-            height: 250px;
             overflow: hidden;
+            position: relative;
         }
-        .project-img img {
+        .project-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: var(--shadow-hover);
+        }
+        .project-img { 
+            height: 280px; 
+            overflow: hidden;
+            position: relative;
+        }
+        .project-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+        .project-card:hover .project-img img { 
+            transform: scale(1.1); 
+        }
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
         }
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
         }
-        .project-info {
-            padding: 30px;
+        .project-overlay h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
         }
-        .project-info h3 {
+        .project-overlay p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
             margin-bottom: 15px;
         }
-        .project-meta {
-            margin-top: 1.5rem;
-            list-style: none;
-            padding: 0;
-        }
-        .project-meta li {
-            margin-bottom: 10px;
-            font-weight: 500;
+        .project-info { padding: 25px; }
+        .project-meta { 
+            color: var(--accent-color); 
+            font-weight: 500; 
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
         }
-        .project-meta i {
-            color: var(--secondary-color);
-            margin-right: 10px;
-            min-width: 25px;
-        }
+        .project-meta i { margin-right: 8px; }
         .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
             display: flex;
-            justify-content: center;
-            margin-top: 40px;
-            gap: 15px;
+            justify-content: space-between;
+            padding: 0 10px;
+            pointer-events: none;
         }
         .carousel-btn {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border-radius: 50%;
             background: var(--primary-color);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
             font-size: 1.2rem;
+            pointer-events: all;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
-        body.dark-mode .carousel-btn {
-            color: var(--primary-color);
-            background: var(--dark-color);
-        }
-        .carousel-btn:hover {
-            background: var(--secondary-color);
+        .carousel-btn:hover { 
+            background: var(--accent-color); 
+            color: var(--secondary-color);
             transform: scale(1.1);
         }
-        .view-all-projects {
-            text-align: center;
-            margin-top: 50px;
+        .view-all-projects { 
+            text-align: center; 
+            margin-top: 60px; 
         }
 
-        /* Services Section */
-        #services { 
-            background-color: var(--white-color);
-        }
-        .service-intro {
+        /* Stats Section */
+        #stats {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
         }
-        .service-intro p {
-            font-size: 1.1rem;
+        #stats:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
         }
-        .services-grid {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px; 
+            max-width: 1000px; 
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
-        .service-card {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            transition: all var(--transition-speed) ease;
-            border: 1px solid transparent;
+        .stat-item { 
+            padding: 30px 15px; 
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--secondary-color);
-        }
-        .service-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .service-icon {
-            font-size: 2.5rem;
-            margin-right: 15px;
-            line-height: 1;
-        }
-        .service-title {
-            font-size: 1.6rem;
-        }
-        .service-desc {
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 15px;
+            color: var(--accent-color);
+            line-height: 1;
+            font-family: var(--heading-font);
         }
-        .service-features {
-            padding-left: 20px;
-            list-style-type: '✓  ';
-        }
-        .service-features li {
-            margin-bottom: 8px;
-            padding-left: 10px;
+        .stat-text { 
+            font-size: 1.2rem; 
+            opacity: 0.9; 
+            line-height: 1.3; 
+            font-weight: 500;
         }
 
         /* Team Section */
         #team {
-            background-color: var(--light-color);
-        }
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .team-subtitle {
-            text-align: center;
-            font-size: 2.5rem;
-            margin: 60px 0 40px;
+            background-color: var(--light-bg-color);
             position: relative;
-            padding-bottom: 15px;
+            overflow: hidden;
         }
-        .team-subtitle::after {
+        #team:before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 250px;
+            height: 250px;
+            background: var(--accent-color);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .team-subtitle { 
+            text-align: center; 
+            font-size: 2.2rem; 
+            margin: 80px 0 50px; 
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .team-subtitle:after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -497,398 +526,382 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--secondary-color);
+            background: var(--accent-color);
+        }
+        .team-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 40px; 
         }
         .team-card {
-            background-color: var(--white-color);
+            background-color: var(--card-bg-light);
             border-radius: var(--border-radius);
             overflow: hidden;
             text-align: center;
             box-shadow: var(--shadow);
             transition: all var(--transition-speed) ease;
-            padding: 20px;
+            position: relative;
+            z-index: 1;
         }
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        .team-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: var(--shadow-hover);
         }
-        .team-card.advisor {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5f 100%);
-            color: var(--white-color);
+        .team-card-img {
+            width: 100%; 
+            height: 350px;
+            overflow: hidden;
+            position: relative;
         }
-        body.dark-mode .team-card.advisor {
-            background: linear-gradient(135deg, #3a506b 0%, #2c3e50 100%);
+        .team-card-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: top; 
+            transition: transform var(--transition-speed) ease; 
         }
-        .team-card.advisor h4, 
-        .team-card.advisor p, 
-        .team-card.advisor .designation {
-            color: var(--white-color);
+        .team-card:hover .team-card-img img { 
+            transform: scale(1.1); 
         }
-        .team-card .designation {
-            color: var(--secondary-color);
+        .team-card-info { 
+            padding: 30px 25px; 
+            position: relative;
+        }
+        .team-card-info:before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .team-card-info h4 { 
+            font-size: 1.5rem; 
+            margin-bottom: 5px; 
+            color: var(--heading-color-light);
+        }
+        .designation {
+            color: var(--accent-color);
             font-weight: 600;
             display: block;
             margin-bottom: 15px;
             font-size: 1rem;
         }
-        .team-card-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 5px solid var(--white-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .team-card-info p { 
+            font-size: 1rem; 
+            line-height: 1.6; 
+            margin-bottom: 20px;
         }
-        body.dark-mode .team-card-img {
-            border-color: var(--light-color);
-        }
-        .team-card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-speed) ease;
-        }
-        .team-card:hover .team-card-img img {
-            transform: scale(1.1);
-        }
-        .team-card-info { 
-            padding: 15px 0 0; 
-        }
-        .team-card-info h4 { 
-            font-size: 1.6rem; 
-            margin-bottom: 5px;
-        }
-        .team-card-info p {
-             font-size: 0.9rem;
-             line-height: 1.6;
-        }
-        .team-socials {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+        .team-socials { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 20px; 
         }
         .team-socials a {
-            color: var(--primary-color);
-            font-size: 1rem;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
+            color: var(--heading-color-light);
+            font-size: 1.1rem;
+            width: 40px; 
+            height: 40px;
+            display: flex; 
+            align-items: center; 
             justify-content: center;
             border: 1px solid #eee;
             border-radius: 50%;
             transition: all var(--transition-speed) ease;
         }
-        body.dark-mode .team-socials a {
-            border-color: #4a5568;
-        }
-        .team-card.advisor .team-socials a {
-            color: var(--white-color);
-            border-color: rgba(255,255,255,0.3);
-        }
-        .team-socials a:hover {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            border-color: var(--secondary-color);
+        body.dark-mode .team-socials a { border-color: #4a5568; }
+        .team-socials a:hover { 
+            background-color: var(--accent-color); 
+            color: var(--secondary-color); 
+            border-color: var(--accent-color); 
             transform: translateY(-3px);
         }
 
         /* Contact Section */
         #contact { 
-            background-color: var(--white-color); 
+            background-color: var(--card-bg-light); 
+            position: relative;
+            overflow: hidden;
         }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            background-color: var(--light-color);
-            padding: 50px;
-            border-radius: var(--border-radius);
+        #contact:after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 250px;
+            height: 250px;
+            background: var(--primary-color);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: 0;
         }
-        .contact-details .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 30px;
+        .contact-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 60px; 
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-details .contact-item { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 20px; 
+            margin-bottom: 35px; 
         }
         .contact-details .icon {
-            font-size: 1.6rem;
-            color: var(--secondary-color);
+            font-size: 2rem;
+            color: var(--accent-color);
             padding-top: 5px;
-            min-width: 40px;
+            min-width: 50px;
             text-align: center;
         }
         .contact-details h4 { 
-            font-size: 1.6rem; 
-            margin-bottom: 5px;
+            font-size: 1.4rem; 
+            margin-bottom: 10px; 
+            color: var(--heading-color-light);
         }
-        .contact-form h3 { 
-            font-size: 2.2rem; 
-            margin-bottom: 2rem;
+        .contact-form form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+            background: var(--light-bg-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
         }
-        .form-group { 
-            margin-bottom: 25px;
-            position: relative;
-        }
-        .form-group input, 
-        .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 16px 20px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             font-family: var(--body-font);
             font-size: 1rem;
             transition: all 0.3s ease;
-            background-color: var(--white-color);
-            color: var(--dark-color);
+            background-color: var(--light-bg-color);
+            color: var(--text-color-light);
         }
-        body.dark-mode .form-group input, 
-        body.dark-mode .form-group textarea {
-            border-color: #4a5568;
-        }
-        .form-group input:focus, 
-        .form-group textarea:focus {
-            outline: none;
+        body.dark-mode .form-group input, body.dark-mode .form-group textarea {
             border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+            background-color: var(--dark-bg-color);
         }
-        .form-group label {
-            position: absolute;
-            top: 16px;
-            left: 20px;
-            color: #999;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        .form-group input:focus + label,
-        .form-group input:not(:placeholder-shown) + label,
-        .form-group textarea:focus + label,
-        .form-group textarea:not(:placeholder-shown) + label {
-            top: -10px;
-            left: 12px;
-            background: var(--light-color);
-            padding: 0 8px;
-            font-size: 0.85rem;
-            color: var(--secondary-color);
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
         }
         
         /* Floating Social Buttons */
         .floating-socials {
-            position: fixed;
-            bottom: 30px;
+            position: fixed; 
+            bottom: 30px; 
             right: 30px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
+            z-index: 999; 
+            display: flex; 
+            flex-direction: column; 
             gap: 15px;
         }
         .social-btn {
-            width: 60px;
-            height: 60px;
+            width: 55px; 
+            height: 55px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
+            display: flex; 
+            align-items: center; 
             justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: white; 
+            font-size: 1.6rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
             transition: all 0.3s ease;
-            animation: pulse 2.5s infinite ease-in-out;
         }
-        .social-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            animation-play-state: paused;
+        .social-btn:hover { 
+            transform: translateY(-5px) scale(1.1); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         .whatsapp-btn { background-color: #25D366; }
-        .facebook-btn { background-color: #1877F2; animation-delay: 0.5s; }
-
-        /* Stats Section */
-        #stats {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5f 100%);
-            color: var(--white-color);
-            text-align: center;
-            padding: 80px 0;
-        }
-        body.dark-mode #stats {
-            background: linear-gradient(135deg, #3a506b 0%, #2c3e50 100%);
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .stat-item { padding: 25px 15px; }
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            font-family: var(--heading-font);
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-            line-height: 1;
-        }
-        .stat-text {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            line-height: 1.3;
-        }
+        .facebook-btn { background-color: #1877F2; }
 
         /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 100px 0 30px;
-        }
-        body.dark-mode footer {
-            background: #171923;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        .footer-col h3 {
-            color: var(--white-color);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+        footer { 
+            background: var(--secondary-color); 
+            color: rgba(255, 255, 255, 0.7); 
+            padding: 100px 0 40px; 
             position: relative;
-            padding-bottom: 10px;
         }
-        .footer-col h3::after {
+        footer:before {
             content: '';
             position: absolute;
+            top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f59e0b' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 50px; 
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-col h3 { 
+            color: var(--white-color); 
+            font-size: 1.5rem; 
+            margin-bottom: 30px; 
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
             bottom: 0;
+            left: 0;
             width: 50px;
             height: 3px;
-            background-color: var(--secondary-color);
+            background: var(--accent-color);
         }
-        .footer-socials {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+        .footer-socials { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 25px; 
         }
         .footer-socials a {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
+            width: 42px; 
+            height: 42px;
+            display: flex; 
+            align-items: center; 
             justify-content: center;
             color: var(--white-color);
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             transition: all var(--transition-speed) ease;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
-        .footer-socials a:hover {
-            background-color: var(--secondary-color);
+        .footer-socials a:hover { 
+            background-color: var(--accent-color); 
+            color: var(--secondary-color); 
             transform: translateY(-3px);
         }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 15px; }
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            transition: all var(--transition-speed) ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .footer-links { 
+            list-style: none; 
         }
-        .footer-links a:hover {
-            color: var(--secondary-color);
+        .footer-links li { 
+            margin-bottom: 18px; 
+        }
+        .footer-links a { 
+            color: rgba(255, 255, 255, 0.7); 
+            transition: all var(--transition-speed) ease; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-links a:before {
+            content: '»';
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+        .footer-links a:hover { 
+            color: var(--accent-color); 
+            padding-left: 5px;
+        }
+        .footer-links a:hover:before {
             transform: translateX(5px);
         }
-        .footer-links a i {
-            font-size: 0.8rem;
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .copyright { 
+            text-align: center; 
+            padding-top: 40px; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            font-size: 0.95rem; 
+            position: relative;
+            z-index: 2;
         }
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            h2 { font-size: 3rem; }
+            :root {
+                --section-spacing: 100px;
+            }
+            h2 { font-size: 2.7rem; }
             .hero-content h1 { font-size: 3.8rem; }
         }
 
         @media (max-width: 992px) {
-            section { padding: 80px 0; }
-            h2 { font-size: 2.8rem; }
-            .hero-content h1 { font-size: 3.2rem; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 3.3rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+            .services-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+            .team-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         }
 
         @media (max-width: 768px) {
+            section { padding: 80px 0; }
             .mobile-menu-toggle {
-                display: block;
-                font-size: 1.8rem;
-                color: var(--primary-color);
-                cursor: pointer;
-                background: none;
-                border: none;
+                display: block; 
+                font-size: 1.8rem; 
+                color: var(--white-color);
+                cursor: pointer; 
+                background: none; 
+                border: none; 
                 z-index: 1001;
             }
             .main-nav {
-                position: fixed;
-                top: 0;
+                position: fixed; 
+                top: 0; 
                 right: -100%;
-                width: 300px;
+                width: 300px; 
                 height: 100vh;
-                background-color: var(--white-color);
-                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                background-color: var(--card-bg-light);
+                box-shadow: -5px 0 30px rgba(0,0,0,0.15);
                 transition: right var(--transition-speed) ease;
-                padding: 100px 30px 30px;
+                padding: 100px 30px 30px; 
                 z-index: 1000;
             }
-            body.dark-mode .main-nav { background-color: var(--white-color); }
             .main-nav.active { right: 0; }
             .main-nav ul { flex-direction: column; }
-            .main-nav li { margin: 0 0 15px; }
-            .main-nav a { display: block; padding: 12px 0; width: 100%; font-size: 1.2rem; }
-            .nav-close-btn {
-                position: absolute;
-                top: 30px;
-                right: 30px;
-                font-size: 2rem;
-                color: var(--primary-color);
-                cursor: pointer;
+            .main-nav li { margin: 0 0 20px; }
+            .main-nav a { 
+                display: block; 
+                padding: 12px 0; 
+                width: 100%; 
+                font-size: 1.2rem; 
+                color: var(--text-color-light); 
             }
-            .hero-content { text-align: center; }
+            .nav-close-btn {
+                display: block; 
+                position: absolute; 
+                top: 30px; 
+                right: 30px;
+                font-size: 2rem; 
+                color: var(--heading-color-light);
+                cursor: pointer; 
+                background: none; 
+                border: none;
+            }
             .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.15rem; }
             .hero-btns { flex-direction: column; align-items: center; }
             .footer-grid { grid-template-columns: 1fr; }
             .project-card { flex: 0 0 calc(50% - 15px); }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .floating-socials { bottom: 20px; right: 20px; }
-            .social-btn { width: 50px; height: 50px; font-size: 1.5rem; }
+            .carousel-controls { display: none; }
+            .team-subtitle { margin: 60px 0 40px; }
         }
 
         @media (max-width: 576px) {
-            .logo h1 { font-size: 1.6rem; }
+            h2 { font-size: 2.2rem; }
             .hero-content h1 { font-size: 2.4rem; }
-            .hero-content p { font-size: 1.1rem; }
-            .contact-grid { padding: 30px 20px; }
             .project-card { flex: 0 0 100%; }
             .stats-grid { grid-template-columns: 1fr; }
+            .contact-grid { padding: 0; }
+            .contact-form form { padding: 30px 20px; }
+            .section-title { margin-bottom: 50px; }
+            .team-card-img { height: 300px; }
         }
     </style>
 </head>
@@ -915,7 +928,7 @@
                 </div>
             </a>
             <nav class="main-nav">
-                <button class="nav-close-btn">&times;</button>
+                <button class="nav-close-btn"><i class="fas fa-times"></i></button>
                 <ul>
                     <li><a href="#hero" class="active" data-lang-key="navHome">হোম</a></li>
                     <li><a href="#projects" data-lang-key="navProjects">প্রকল্পসমূহ</a></li>
@@ -939,51 +952,22 @@
     <main>
         <section id="hero">
             <div class="container">
-                <div class="hero-content">
+                <div class="hero-content" data-aos="fade-up">
                     <h1 data-lang-key="heroTitle">আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়...</h1>
-                    <p data-lang-key="heroSubtitle">আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে।</p>
+                    <p data-lang-key="heroSubtitle">আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিলাপুরুষ। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে।</p>
                     <div class="hero-btns">
                         <a href="#projects" class="btn" data-lang-key="heroBtnProjects">আমাদের প্রকল্প দেখুন</a>
-                        <a href="#contact" class="btn btn-accent" data-lang-key="heroBtnContact">যোগাযোগ করুন</a>
+                        <a href="#contact" class="btn btn-light" data-lang-key="heroBtnContact">যোগাযোগ করুন</a>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="projects">
-            <div class="container">
-                <div class="section-title">
-                    <span data-lang-key="projectsSubTitle">আমাদের কাজ</span>
-                    <h2 data-lang-key="projectsTitle">প্রকল্পসমূহ</h2>
-                </div>
-                
-                <div class="projects-carousel">
-                    <div class="carousel-container">
-                        <div class="carousel-slides">
-                            <!-- Project cards will be populated by JavaScript -->
-                        </div>
-                    </div>
-                    
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn" aria-label="Previous Project"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn" aria-label="Next Project"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    
-                    <div class="view-all-projects">
-                        <a href="https://www.facebook.com/ashroyengr" class="btn" target="_blank" data-lang-key="allProjectsBtn">সমস্ত চলমান প্রকল্প দেখুন</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        
         <section id="services">
             <div class="container">
-                <div class="section-title">
+                <div class="section-title" data-aos="fade-up">
                     <span data-lang-key="servicesSubTitle">আমরা কি করি</span>
                     <h2 data-lang-key="servicesTitle">আমাদের সেবাসমূহ</h2>
-                </div>
-                <div class="service-intro">
-                    <p data-lang-key="servicesIntro">Ashroy Architects & Engineers – ডিজাইন থেকে ডেলিভারি পর্যন্ত, আপনাদের স্বপ্নের ঠিকানাকে বাস্তব করে তোলাই আমাদের অঙ্গীকার।</p>
                 </div>
                 <div class="services-grid">
                     <!-- Service cards will be populated by JavaScript -->
@@ -991,22 +975,48 @@
             </div>
         </section>
 
+        <section id="projects">
+            <div class="container">
+                <div class="projects-header">
+                    <div class="section-title" data-aos="fade-up">
+                        <span data-lang-key="projectsSubTitle">আমাদের কাজ</span>
+                        <h2 data-lang-key="projectsTitle">প্রকল্পসমূহ</h2>
+                    </div>
+                </div>
+                
+                <div class="projects-carousel" data-aos="fade-up" data-aos-delay="200">
+                    <div class="carousel-container">
+                        <div class="carousel-slides">
+                            <!-- Project cards will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" aria-label="Previous Project"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" aria-label="Next Project"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="view-all-projects" data-aos="fade-up">
+                    <a href="https://www.facebook.com/ashroyengr" class="btn" target="_blank" data-lang-key="allProjectsBtn">সমস্ত চলমান প্রকল্প দেখুন</a>
+                </div>
+            </div>
+        </section>
+
         <section id="stats">
             <div class="container">
                 <div class="stats-grid">
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="fade-up">
                         <div class="stat-number">120+</div>
                         <div class="stat-text" data-lang-key="statsProjects">সম্পন্ন প্রকল্প</div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="stat-number">15+</div>
                         <div class="stat-text" data-lang-key="statsExperience">বছরের অভিজ্ঞতা</div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-number">50+</div>
                         <div class="stat-text" data-lang-key="statsProfessionals">পেশাদার কর্মী</div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
                         <div class="stat-number">98%</div>
                         <div class="stat-text" data-lang-key="statsSatisfaction">গ্রাহক সন্তুষ্টি</div>
                     </div>
@@ -1016,17 +1026,17 @@
 
         <section id="team">
             <div class="container">
-                <div class="section-title">
+                <div class="section-title" data-aos="fade-up">
                     <span data-lang-key="teamSubTitle">আমাদের শক্তি</span>
                     <h2 data-lang-key="teamTitle">বিশেষজ্ঞ টিম</h2>
                 </div>
 
-                <h3 class="team-subtitle" data-lang-key="teamAdvisors">উপদেষ্টা মন্ডলী</h3>
+                <h3 class="team-subtitle" data-aos="fade-up" data-lang-key="teamAdvisors">উপদেষ্টা মন্ডলী</h3>
                 <div class="team-grid" id="advisor-team-grid">
                     <!-- Advisor cards will be populated by JavaScript -->
                 </div>
 
-                <h3 class="team-subtitle" data-lang-key="teamDesign">ডিজাইন টিম</h3>
+                <h3 class="team-subtitle" data-aos="fade-up" data-lang-key="teamDesign">ডিজাইন টিম</h3>
                 <div class="team-grid" id="design-team-grid">
                     <!-- Design Team cards will be populated by JavaScript -->
                 </div>
@@ -1035,11 +1045,11 @@
 
         <section id="contact">
             <div class="container">
-                 <div class="section-title">
+                 <div class="section-title" data-aos="fade-up">
                     <span data-lang-key="contactSubTitle">যোগাযোগ</span>
                     <h2 data-lang-key="contactTitle">আমাদের সাথে কথা বলুন</h2>
                 </div>
-                <div class="contact-grid">
+                <div class="contact-grid" data-aos="fade-up" data-aos-delay="200">
                     <div class="contact-details">
                         <h3 data-lang-key="contactInfoTitle">তথ্য কেন্দ্র</h3>
                         <p data-lang-key="contactInfoDesc">আপনার যেকোনো প্রশ্ন বা পরামর্শের জন্য আমাদের সাথে সরাসরি যোগাযোগ করুন। আমরা আপনার সেবায় নিয়োজিত।</p>
@@ -1065,29 +1075,18 @@
                                 <p>ashroyengineers@gmail.com</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock icon"></i>
-                            <div>
-                                <h4 data-lang-key="contactHours">অফিস সময়</h4>
-                                <p data-lang-key="contactHoursSatThu">শনিবার - বৃহস্পতিবার: সকাল ৯টা - রাত ৮টা</p>
-                                <p data-lang-key="contactHoursFri">শুক্রবার: বিকাল ৩টা - রাত ৮টা</p>
-                            </div>
-                        </div>
                     </div>
                     <div class="contact-form">
                         <h3 data-lang-key="contactFormTitle">বার্তা পাঠান</h3>
                         <form id="contactForm">
                             <div class="form-group">
-                                <input type="text" id="name" placeholder=" " required>
-                                <label for="name" data-lang-key="formName">আপনার নাম</label>
+                                <input type="text" id="name" placeholder="আপনার নাম" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" id="phone" placeholder=" " required>
-                                <label for="phone" data-lang-key="formPhone">ফোন নাম্বার</label>
+                                <input type="tel" id="phone" placeholder="ফোন নাম্বার" required>
                             </div>
                             <div class="form-group">
-                                <textarea id="message" rows="6" placeholder=" " required></textarea>
-                                <label for="message" data-lang-key="formMessage">আপনার বার্তা</label>
+                                <textarea id="message" rows="5" placeholder="আপনার বার্তা" required></textarea>
                             </div>
                             <button type="submit" class="btn" data-lang-key="formSubmit">বার্তা পাঠান</button>
                         </form>
@@ -1106,11 +1105,11 @@
                             <img src="https://i.imgur.com/12REMj2.jpeg" alt="Ashroy Logo">
                         </div>
                         <div>
-                            <h1 data-lang-key="logoName">Ashroy</h1>
+                            <h1 data-lang-key="logoName" style="color: white;">Ashroy</h1>
                             <span data-lang-key="logoTagline">Architect's & Engineer's</span>
                         </div>
                     </a>
-                    <p data-lang-key="footerDesc">আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম।</p>
+                    <p data-lang-key="footerDesc">আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিলাপুরুষ।</p>
                      <div class="footer-socials">
                         <a href="https://www.facebook.com/ashroyengr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://wa.me/+8801615645860" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1121,28 +1120,20 @@
                  <div class="footer-col">
                     <h3 data-lang-key="footerLinksTitle">গুরুত্বপূর্ণ লিঙ্ক</h3>
                     <ul class="footer-links">
-                        <li><a href="#projects"><i class="fas fa-chevron-right"></i><span data-lang-key="navProjects">প্রকল্পসমূহ</span></a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="navServices">সেবাসমূহ</span></a></li>
-                        <li><a href="#team"><i class="fas fa-chevron-right"></i><span data-lang-key="navTeam">টিম</span></a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i><span data-lang-key="navContact">যোগাযোগ</span></a></li>
+                        <li><a href="#projects"><span data-lang-key="navProjects">প্রকল্পসমূহ</span></a></li>
+                        <li><a href="#services"><span data-lang-key="navServices">সেবাসমূহ</span></a></li>
+                        <li><a href="#team"><span data-lang-key="navTeam">টিম</span></a></li>
+                        <li><a href="#contact"><span data-lang-key="navContact">যোগাযোগ</span></a></li>
                     </ul>
                 </div>
                  <div class="footer-col">
                     <h3 data-lang-key="footerServicesTitle">আমাদের সেবাসমূহ</h3>
                     <ul class="footer-links">
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService1">স্থাপত্য ডিজাইন</span></a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService2">জমির প্ল্যান</span></a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService3">৩ডি ভিউ</span></a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService4">কাঠামোগত ডিজাইন</span></a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i><span data-lang-key="footerService5">অভ্যন্তরীণ ডিজাইন</span></a></li>
-                    </ul>
-                </div>
-                 <div class="footer-col">
-                    <h3 data-lang-key="navContact">যোগাযোগ</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> <span data-lang-key="footerAddress">মিরপুর-১২, ঢাকা</span></li>
-                        <li><a href="tel:+8801615645860"><i class="fas fa-phone-alt"></i> +8801615645860</a></li>
-                        <li><a href="mailto:ashroyengineers@gmail.com"><i class="fas fa-envelope"></i> ashroyengineers@gmail.com</a></li>
+                        <li><a href="#services"><span data-lang-key="footerService1">স্থাপত্য ডিজাইন</span></a></li>
+                        <li><a href="#services"><span data-lang-key="footerService2">জমির প্ল্যান</span></a></li>
+                        <li><a href="#services"><span data-lang-key="footerService3">৩ডি ভিউ</span></a></li>
+                        <li><a href="#services"><span data-lang-key="footerService4">কাঠামোগত ডিজাইন</span></a></li>
+                        <li><a href="#services"><span data-lang-key="footerService5">অভ্যন্তরীণ ডিজাইন</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -1151,11 +1142,12 @@
             </div>
         </div>
     </footer>
-
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         
-        // --- LANGUAGE AND CONTENT MANAGEMENT ---
+        // --- DATA ---
         const languageData = {
             bn: {
                 siteTitle: "Ashroy Architect's & Engineer's - আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়",
@@ -1167,7 +1159,7 @@
                 navTeam: "টিম",
                 navContact: "যোগাযোগ",
                 heroTitle: "আশ্রয়, যেখানে নিরাপদ বাড়ির বুনিয়াদ হয়...",
-                heroSubtitle: "আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে।",
+                heroSubtitle: "আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিলাপুরুষ। আপনার স্বপ্ন পূরণে আমরা আছি আপনার পাশে।",
                 heroBtnProjects: "আমাদের প্রকল্প দেখুন",
                 heroBtnContact: "যোগাযোগ করুন",
                 projectsSubTitle: "আমাদের কাজ",
@@ -1175,7 +1167,6 @@
                 allProjectsBtn: "সমস্ত চলমান প্রকল্প দেখুন",
                 servicesSubTitle: "আমরা কি করি",
                 servicesTitle: "আমাদের সেবাসমূহ",
-                servicesIntro: "Ashroy Architects & Engineers – ডিজাইন থেকে ডেলিভারি পর্যন্ত, আপনাদের স্বপ্নের ঠিকানাকে বাস্তব করে তোলাই আমাদের অঙ্গীকার।",
                 statsProjects: "সম্পন্ন প্রকল্প",
                 statsExperience: "বছরের অভিজ্ঞতা",
                 statsProfessionals: "পেশাদার কর্মী",
@@ -1193,15 +1184,9 @@
                 contactOfficeAddress2: "শাখা অফিস: রামপুর বাজার, কালিহাতী, টাঙ্গাইল",
                 contactPhone: "ফোন ও হোয়াটসঅ্যাপ",
                 contactEmail: "ইমেইল",
-                contactHours: "অফিস সময়",
-                contactHoursSatThu: "শনিবার - বৃহস্পতিবার: সকাল ৯টা - রাত ৮টা",
-                contactHoursFri: "শুক্রবার: বিকাল ৩টা - রাত ৮টা",
                 contactFormTitle: "বার্তা পাঠান",
-                formName: "আপনার নাম",
-                formPhone: "ফোন নাম্বার",
-                formMessage: "আপনার বার্তা",
                 formSubmit: "বার্তা পাঠান",
-                footerDesc: "আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিল্পকর্ম।",
+                footerDesc: "আপনার স্বপ্নের বাড়ির স্থপতি। আমরা বিশ্বাস করি আপনার বাড়িটি শুধু মাথা গোঁজার স্থান নয়, হতে পারে একটি সৃজনশীল শিলাপুরুষ।",
                 footerLinksTitle: "গুরুত্বপূর্ণ লিঙ্ক",
                 footerServicesTitle: "আমাদের সেবাসমূহ",
                 footerService1: "স্থাপত্য ডিজাইন",
@@ -1209,24 +1194,23 @@
                 footerService3: "৩ডি ভিউ",
                 footerService4: "কাঠামোগত ডিজাইন",
                 footerService5: "অভ্যন্তরীণ ডিজাইন",
-                footerAddress: "মিরপুর-১২, ঢাকা",
                 footerCopyright: `&copy; ${new Date().getFullYear()} Ashroy Architect's & Engineer's. সকল স্বত্ব সংরক্ষিত।`,
-                formSubmissionAlert: "বার্তা পাঠানোর জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। জরুরী প্রয়োজনে সরাসরি আমাদের হোয়াটসঅ্যাপে মেসেজ দিন!",
+                formSubmissionAlert: "বার্তা পাঠানোর জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।",
                 projects: [
-                    { title: "আধুনিক আবাসিক প্রকল্প", desc: "মিরপুরের প্রাণকেন্দ্রে নির্মিতব্য একটি আধুনিক আবাসিক কমপ্লেক্স। ১০ তলা বিশিষ্ট এই ভবনে থাকবে ২০টি ফ্ল্যাট, সুইমিং পুল, জিমনেশিয়াম এবং সবুজ উদ্যান।", location: "মিরপুর, ঢাকা", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "বিলাসবহুল ভিলা প্রকল্প", desc: "গুলশানে নির্মিতব্য এই বিলাসবহুল ভিলাটি আধুনিক স্থাপত্য ও প্রাকৃতিক সৌন্দর্যের মেলবন্ধন। ৮,০০০ বর্গফুটের এই ভিলায় থাকবে ৫টি শোবার ঘর, হোম থিয়েটার এবং প্রাইভেট গার্ডেন।", location: "গুলশান, ঢাকা", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "বাণিজ্যিক কমপ্লেক্স", desc: "উত্তরায় নির্মিতব্য ১৫ তলা বিশিষ্ট এই বাণিজ্যিক কমপ্লেক্সে থাকবে শপিং মল, অফিস স্পেস এবং ফুড কোর্ট। আধুনিক স্থাপত্যের সাথে পরিবেশবান্ধব ডিজাইনের সমন্বয় এই প্রকল্পের বিশেষত্ব।", location: "উত্তরা, ঢাকা", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "গ্রিন সিটি প্রকল্প", desc: "পরিবেশবান্ধব এই আবাসিক প্রকল্পে থাকবে সবুজ উদ্যান, সৌর বিদ্যুৎ ব্যবস্থা এবং বৃষ্টির পানি সংরক্ষণ ব্যবস্থা। প্রকল্পটিতে থাকবে ১০০টি পরিবারের জন্য আবাসিক ইউনিট।", location: "সাভার, ঢাকা", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "আধুনিক অফিস কমপ্লেক্স", desc: "মোহাম্মদপুরে নির্মিতব্য এই ১২ তলা অফিস কমপ্লেক্সে থাকবে আধুনিক সকল সুবিধা সহকারে ডিজাইন করা অফিস স্পেস, মিটিং রুম এবং ক্যাফেটেরিয়া।", location: "মোহাম্মদপুর, ঢাকা", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "স্মার্ট হাউজিং প্রকল্প", desc: "এই প্রকল্পে আধুনিক স্মার্ট হোম টেকনোলজির ব্যবহার করা হয়েছে। বাসিন্দারা তাদের মোবাইল ফোন দিয়ে ঘরের সকল সিস্টেম নিয়ন্ত্রণ করতে পারবেন।", location: "বসুন্ধরা, ঢাকা", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+                    { title: "আধুনিক আবাসিক প্রকল্প", desc: "মিরপুরের প্রাণকেন্দ্রে নির্মিতব্য একটি আধুনিক আবাসিক কমপ্লেক্স।", location: "মিরপুর, ঢাকা", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "বিলাসবহুল ভিলা", desc: "গুলশানে নির্মিতব্য এই বিলাসবহুল ভিলাটি আধুনিক স্থাপত্য ও প্রাকৃতিক সৌন্দর্যের মেলবন্ধন।", location: "গুলশান, ঢাকা", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "বাণিজ্যিক কমপ্লেক্স", desc: "উত্তরায় নির্মিতব্য ১৫ তলা বিশিষ্ট এই বাণিজ্যিক কমপ্লেক্সে থাকবে শপিং মল, অফিস স্পেস এবং ফুড কোর্ট।", location: "উত্তরা, ঢাকা", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "গ্রিন সিটি প্রকল্প", desc: "পরিবেশবান্ধব এই আবাসিক প্রকল্পে থাকবে সবুজ উদ্যান, সৌর বিদ্যুৎ ব্যবস্থা এবং বৃষ্টির পানি সংরক্ষণ ব্যবস্থা।", location: "সাভার, ঢাকা", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "আধুনিক অফিস কমপ্লেক্স", desc: "মোহাম্মদপুরে নির্মিতব্য এই ১২ তলা অফিস কমপ্লেক্সে থাকবে আধুনিক সকল সুবিধা।", location: "মোহাম্মদপুর, ঢাকা", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "স্মার্ট হাউজিং", desc: "এই প্রকল্পে আধুনিক স্মার্ট হোম টেকনোলজির ব্যবহার করা হয়েছে।", location: "বসুন্ধরা, ঢাকা", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
                 ],
                 services: [
-                    { icon: '🏠', title: 'স্থাপত্য নকশা', desc: 'আবাসিক, বাণিজ্যিক ও শিল্প কারখানার জন্য আধুনিক ও কার্যকর ডিজাইন', features: ['ক্লায়েন্টের চাহিদা, বাজেট ও স্থানভেদে কাস্টমাইজড ডিজাইন', 'থ্রি-ডি ভিজ্যুয়ালাইজেশন ও ওয়াকথ্রু ভিডিও'] },
-                    { icon: '🧱', title: 'স্ট্রাকচারাল ডিজাইন', desc: 'নিরাপদ ও টেকসই স্ট্রাকচার ডিজাইন (RCC, Steel, Foundation etc.)', features: ['সরকার নির্ধারিত কোড এবং ইঞ্জিনিয়ারিং স্ট্যান্ডার্ড অনুযায়ী বিশ্লেষণ'] },
-                    { icon: '📐', title: 'প্ল্যান অনুমোদন ও অটোমেশন ড্রয়িংস', desc: 'রাজউক/পৌরসভা/সিটি কর্পোরেশন প্ল্যান সাবমিশন', features: ['অনুমোদনযোগ্য ম্যাপ, লেআউট প্ল্যান, সাইট প্ল্যান, ইলেকট্রিক ও স্যানিটারি ড্রয়িং'] },
-                    { icon: '🏗️', title: 'কন্সট্রাকশন সুপারভিশন ও বাস্তবায়ন', desc: 'নির্মাণ কাজের নিয়মিত তদারকি ও মান নিয়ন্ত্রণ', features: ['বিল্ডিং নির্মাণে লেবার, কাঁচামাল ও কনসালটেন্সি সার্ভিস'] },
-                    { icon: '💡', title: 'ইলেকট্রিক্যাল ও প্লাম্বিং ডিজাইন', desc: 'আধুনিক, নিরাপদ ও ব্যয়-সাশ্রয়ী ইলেকট্রিক্যাল ও স্যানিটারি ডিজাইন', features: ['লাইটিং, ফায়ার সেফটি, পানির সাপ্লাই ও স্যুয়ারেজ সিস্টেম'] },
-                    { icon: '🏞️', title: 'ল্যান্ডস্কেপ ও ইন্টেরিয়র ডিজাইন', desc: 'গার্ডেন, ছাদ বাগান ও বাইরের সৌন্দর্য বর্ধন', features: ['ঘরের ভেতরের ফার্নিচার, কালার থিম, ওয়ার্ডরোব, মডুলার কিচেন ডিজাইন'] }
+                    { icon: 'fa-solid fa-drafting-compass', title: 'স্থাপত্য নকশা', desc: 'আবাসিক, বাণিজ্যিক ও শিল্প কারখানার জন্য আধুনিক ও কার্যকর ডিজাইন।' },
+                    { icon: 'fa-solid fa-ruler-combined', title: 'স্ট্রাকচারাল ডিজাইন', desc: 'নিরাপদ ও টেকসই স্ট্রাকচার ডিজাইন (RCC, Steel, Foundation etc.)।' },
+                    { icon: 'fa-solid fa-check-to-slot', title: 'প্ল্যান অনুমোদন', desc: 'রাজউক/পৌরসভা/সিটি কর্পোরেশন প্ল্যান সাবমিশন ও অনুমোদন।' },
+                    { icon: 'fa-solid fa-hard-hat', title: 'নির্মাণ তত্ত্বাবধান', desc: 'নির্মাণ কাজের নিয়মিত তদারকি ও মান নিয়ন্ত্রণ।' },
+                    { icon: 'fa-solid fa-lightbulb', title: 'ইলেকট্রিক্যাল ও প্লাম্বিং', desc: 'আধুনিক, নিরাপদ ও ব্যয়-সাশ্রয়ী ইলেকট্রিক্যাল ও স্যানিটারি ডিজাইন।' },
+                    { icon: 'fa-solid fa-couch', title: 'ইন্টেরিয়র ও ল্যান্ডস্কেপ', desc: 'গার্ডেন, ছাদ বাগান ও ঘরের ভেতরের সৌন্দর্য বর্ধন।' }
                 ],
                 advisors: [
                     { name: 'Professor Dr. Md. Nazrul Islam', designation: 'প্রধান উপদেষ্টা', details: 'B.Sc. Engg (Civil, BUET), M.Sc. Engg (Structural, BUET), Ph.D (Structural, UKM), Life Fellow (IEB)', img: 'https://i.imgur.com/9SH9l2R.jpeg' },
@@ -1234,11 +1218,11 @@
                     { name: 'Engr. Shahidur Rahman', designation: 'বিশেষজ্ঞ উপদেষ্টা', details: 'বিশিষ্ট অভিজ্ঞতা সম্পন্ন সিভিল ইঞ্জিনিয়ার। বিভিন্ন মেগা প্রকল্পে কাজের দীর্ঘ অভিজ্ঞতা রয়েছে।', img: 'https://i.imgur.com/fHuJbWw.jpeg' }
                 ],
                 designTeam: [
-                    { name: 'Engr. Mahbobur Rahman Rasel', designation: 'প্রতিষ্ঠাতা ও সিইও', details: "Ashroy Architect's & Engineer's এর সহ-প্রতিষ্ঠাতা ও প্রধান নির্বাহী কর্মকর্তা। ১০+ বছর অভিজ্ঞতাসম্পন্ন প্রকৌশলী।", img: 'https://i.imgur.com/3kdxCSV.jpeg' },
-                    { name: 'Arch. Emadul Haque', designation: 'সিনিয়র স্থপতি', details: "Ashroy Architect's & Engineer's এর সিনিয়র স্থপতি। আধুনিক ও কার্যকরী ডিজাইনে বিশেষ পারদর্শী। ১০+ বছর অভিজ্ঞতা।", img: 'https://i.imgur.com/uoF7dNb.jpeg' },
-                    { name: 'Eng. Mushfiqur Rahman Akash', designation: 'সিনিয়র সিভিল ইঞ্জিনিয়ার', details: "Ashroy Architect's & Engineer's এর সিনিয়র সিভিল ইঞ্জিনিয়ার। কাঠামোগত ডিজাইন ও নির্মাণ তত্ত্বাবধানে বিশেষ পারদর্শী।", img: 'https://i.imgur.com/NnlAlKT.jpeg' },
+                    { name: 'Engr. Mahbobur Rahman Rasel', designation: 'প্রতিষ্ঠাতা ও সিইও', details: "Ashroy Architect's & Engineer's এর সহ-প্রতিষ্ঠাতা ও প্রধান নির্বাহী কর্মকর্তা।", img: 'https://i.imgur.com/3kdxCSV.jpeg' },
+                    { name: 'Arch. Emadul Haque', designation: 'সিনিয়র স্থপতি', details: "Ashroy Architect's & Engineer's এর সিনিয়র স্থপতি। আধুনিক ও কার্যকরী ডিজাইনে বিশেষ পারদর্শী।", img: 'https://i.imgur.com/uoF7dNb.jpeg' },
+                    { name: 'Eng. Mushfiqur Rahman Akash', designation: 'সিনিয়র সিভিল ইঞ্জিনিয়ার', details: "Ashroy Architect's & Engineer's এর সিনিয়র সিভিল ইঞ্জিনিয়ার। কাঠামোগত ডিজাইন ও নির্মাণ তত্ত্বাবধানে পারদর্শী।", img: 'https://i.imgur.com/NnlAlKT.jpeg' },
                     { name: 'Engr. Rashidul Islam Rony', designation: 'সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার', details: "Ashroy Architect's & Engineer's এর সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার। বিদ্যুৎ ব্যবস্থা ডিজাইনে বিশেষজ্ঞ।", img: 'https://i.imgur.com/YP3Anzu.jpeg' },
-                    { name: 'Engr. Shamim Hossen', designation: 'সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার', details: "Ashroy Architects & Engineers এর সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার। আধুনিক ও নিরাপদ বিদ্যুৎ ব্যবস্থা ডিজাইনে বিশেষজ্ঞ। ১০+ বছর অভিজ্ঞতা।", img: 'https://i.imgur.com/SwNXcPp.jpeg' }
+                    { name: 'Engr. Shamim Hossen', designation: 'সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার', details: "Ashroy Architects & Engineers এর সিনিয়র ইলেকট্রিক্যাল ইঞ্জিনিয়ার। নিরাপদ বিদ্যুৎ ব্যবস্থা ডিজাইনে বিশেষজ্ঞ।", img: 'https://i.imgur.com/SwNXcPp.jpeg' }
                 ]
             },
             en: {
@@ -1259,7 +1243,6 @@
                 allProjectsBtn: "View All Ongoing Projects",
                 servicesSubTitle: "What We Do",
                 servicesTitle: "Our Services",
-                servicesIntro: "Ashroy Architects & Engineers – From design to delivery, our commitment is to make your dream address a reality.",
                 statsProjects: "Completed Projects",
                 statsExperience: "Years of Experience",
                 statsProfessionals: "Professional Staff",
@@ -1277,13 +1260,7 @@
                 contactOfficeAddress2: "Branch Office: Rampur Bazar, Kalihati, Tangail",
                 contactPhone: "Phone & WhatsApp",
                 contactEmail: "Email",
-                contactHours: "Office Hours",
-                contactHoursSatThu: "Saturday - Thursday: 9 AM - 8 PM",
-                contactHoursFri: "Friday: 3 PM - 8 PM",
                 contactFormTitle: "Send a Message",
-                formName: "Your Name",
-                formPhone: "Phone Number",
-                formMessage: "Your Message",
                 formSubmit: "Send Message",
                 footerDesc: "The architect of your dream home. We believe your home is not just a place to live, but a creative work of art.",
                 footerLinksTitle: "Quick Links",
@@ -1293,24 +1270,23 @@
                 footerService3: "3D Views",
                 footerService4: "Structural Design",
                 footerService5: "Interior Design",
-                footerAddress: "Mirpur-12, Dhaka",
                 footerCopyright: `&copy; ${new Date().getFullYear()} Ashroy Architect's & Engineer's. All rights reserved.`,
-                formSubmissionAlert: "Thank you for your message! We will contact you shortly. For urgent needs, please message us directly on WhatsApp!",
+                formSubmissionAlert: "Thank you for your message! We will contact you shortly.",
                 projects: [
-                    { title: "Modern Residential Project", desc: "A modern residential complex under construction in the heart of Mirpur. This 10-story building will feature 20 flats, a swimming pool, a gymnasium, and a green garden.", location: "Mirpur, Dhaka", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "Luxury Villa Project", desc: "This luxury villa in Gulshan is a blend of modern architecture and natural beauty. The 8,000 sq. ft. villa will have 5 bedrooms, a home theater, and a private garden.", location: "Gulshan, Dhaka", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "Commercial Complex", desc: "This 15-story commercial complex in Uttara will include a shopping mall, office spaces, and a food court. The project features a combination of modern architecture and eco-friendly design.", location: "Uttara, Dhaka", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "Green City Project", desc: "This eco-friendly residential project will feature green parks, a solar power system, and a rainwater harvesting system. The project will have residential units for 100 families.", location: "Savar, Dhaka", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "Modern Office Complex", desc: "This 12-story office complex in Mohammadpur will feature office spaces, meeting rooms, and a cafeteria designed with all modern amenities.", location: "Mohammadpur, Dhaka", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
-                    { title: "Smart Housing Project", desc: "This project utilizes modern smart home technology. Residents will be able to control all home systems with their mobile phones.", location: "Bashundhara, Dhaka", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+                    { title: "Modern Residential Project", desc: "A modern residential complex under construction in the heart of Mirpur.", location: "Mirpur, Dhaka", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Luxury Villa", desc: "This luxury villa in Gulshan is a blend of modern architecture and natural beauty.", location: "Gulshan, Dhaka", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Commercial Complex", desc: "This 15-story commercial complex in Uttara will include a shopping mall, and office spaces.", location: "Uttara, Dhaka", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Green City Project", desc: "This eco-friendly residential project will feature green parks and a solar power system.", location: "Savar, Dhaka", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Modern Office Complex", desc: "This 12-story office complex in Mohammadpur will feature all modern amenities.", location: "Mohammadpur, Dhaka", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                    { title: "Smart Housing", desc: "This project utilizes modern smart home technology.", location: "Bashundhara, Dhaka", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
                 ],
                 services: [
-                    { icon: '🏠', title: 'Architectural Design', desc: 'Modern and effective designs for residential, commercial, and industrial buildings.', features: ['Customized designs based on client needs, budget, and location', '3D visualization and walkthrough videos'] },
-                    { icon: '🧱', title: 'Structural Design', desc: 'Safe and durable structural design (RCC, Steel, Foundation etc.).', features: ['Analysis according to government-prescribed codes and engineering standards'] },
-                    { icon: '📐', title: 'Plan Approval & Automation Drawings', desc: 'Plan submission to RAJUK/Municipality/City Corporation.', features: ['Approvable maps, layout plans, site plans, electric, and sanitary drawings'] },
-                    { icon: '🏗️', title: 'Construction Supervision & Implementation', desc: 'Regular supervision and quality control of construction work.', features: ['Labor, raw materials, and consultancy services for building construction'] },
-                    { icon: '💡', title: 'Electrical & Plumbing Design', desc: 'Modern, safe, and cost-effective electrical and sanitary designs.', features: ['Lighting, fire safety, water supply, and sewerage systems'] },
-                    { icon: '🏞️', title: 'Landscape & Interior Design', desc: 'Gardens, rooftop gardens, and exterior beautification.', features: ['Interior furniture, color themes, wardrobes, and modular kitchen designs'] }
+                    { icon: 'fa-solid fa-drafting-compass', title: 'Architectural Design', desc: 'Modern and effective designs for residential, commercial, and industrial buildings.' },
+                    { icon: 'fa-solid fa-ruler-combined', title: 'Structural Design', desc: 'Safe and durable structural design (RCC, Steel, Foundation etc.).' },
+                    { icon: 'fa-solid fa-check-to-slot', title: 'Plan Approval', desc: 'Plan submission and approval from RAJUK/Municipality/City Corp.' },
+                    { icon: 'fa-solid fa-hard-hat', title: 'Construction Supervision', desc: 'Regular supervision and quality control of construction work.' },
+                    { icon: 'fa-solid fa-lightbulb', title: 'Electrical & Plumbing', desc: 'Modern, safe, and cost-effective electrical and sanitary designs.' },
+                    { icon: 'fa-solid fa-couch', title: 'Interior & Landscape', desc: 'Gardens, rooftop gardens, and interior beautification.' }
                 ],
                 advisors: [
                     { name: 'Professor Dr. Md. Nazrul Islam', designation: 'Chief Advisor', details: 'B.Sc. Engg (Civil, BUET), M.Sc. Engg (Structural, BUET), Ph.D (Structural, UKM), Life Fellow (IEB)', img: 'https://i.imgur.com/9SH9l2R.jpeg' },
@@ -1318,11 +1294,11 @@
                     { name: 'Engr. Shahidur Rahman', designation: 'Expert Advisor', details: 'A highly experienced civil engineer with extensive experience in various mega-projects.', img: 'https://i.imgur.com/fHuJbWw.jpeg' }
                 ],
                 designTeam: [
-                    { name: 'Engr. Mahbobur Rahman Rasel', designation: 'Founder & CEO', details: "Co-founder & CEO of Ashroy Architect's & Engineer's. An engineer with 10+ years of experience.", img: 'https://i.imgur.com/3kdxCSV.jpeg' },
-                    { name: 'Arch. Emadul Haque', designation: 'Senior Architect', details: "Senior Architect at Ashroy Architect's & Engineer's. Specializes in modern and functional design. 10+ years of experience.", img: 'https://i.imgur.com/uoF7dNb.jpeg' },
+                    { name: 'Engr. Mahbobur Rahman Rasel', designation: 'Founder & CEO', details: "Co-founder & CEO of Ashroy Architect's & Engineer's.", img: 'https://i.imgur.com/3kdxCSV.jpeg' },
+                    { name: 'Arch. Emadul Haque', designation: 'Senior Architect', details: "Senior Architect at Ashroy Architect's & Engineer's. Specializes in modern and functional design.", img: 'https://i.imgur.com/uoF7dNb.jpeg' },
                     { name: 'Eng. Mushfiqur Rahman Akash', designation: 'Senior Civil Engineer', details: "Senior Civil Engineer at Ashroy Architect's & Engineer's. Specializes in structural design and construction supervision.", img: 'https://i.imgur.com/NnlAlKT.jpeg' },
                     { name: 'Engr. Rashidul Islam Rony', designation: 'Senior Electrical Engineer', details: "Senior Electrical Engineer at Ashroy Architect's & Engineer's. Specializes in electrical system design.", img: 'https://i.imgur.com/YP3Anzu.jpeg' },
-                    { name: 'Engr. Shamim Hossen', designation: 'Senior Electrical Engineer', details: "Senior Electrical Engineer at Ashroy Architects & Engineers. Specializes in modern and safe electrical system design. 10+ years of experience.", img: 'https://i.imgur.com/SwNXcPp.jpeg' }
+                    { name: 'Engr. Shamim Hossen', designation: 'Senior Electrical Engineer', details: "Senior Electrical Engineer at Ashroy Architects & Engineers. Specializes in modern and safe electrical system design.", img: 'https://i.imgur.com/SwNXcPp.jpeg' }
                 ]
             }
         };
@@ -1334,30 +1310,16 @@
             localStorage.setItem('language', lang);
             document.documentElement.lang = lang;
             
-            const elements = document.querySelectorAll('[data-lang-key]');
-            elements.forEach(el => {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
                 const key = el.getAttribute('data-lang-key');
                 if (languageData[lang][key]) {
                     el.innerHTML = languageData[lang][key];
                 }
             });
 
-            // Update form labels and placeholders
-            const formLabels = {
-                name: document.querySelector('label[for="name"]'),
-                phone: document.querySelector('label[for="phone"]'),
-                message: document.querySelector('label[for="message"]'),
-            };
-            if(formLabels.name) formLabels.name.textContent = languageData[lang].formName;
-            if(formLabels.phone) formLabels.phone.textContent = languageData[lang].formPhone;
-            if(formLabels.message) formLabels.message.textContent = languageData[lang].formMessage;
-
-            // Update dynamic content
             populateProjects(lang);
             populateServices(lang);
             populateTeam(lang);
-
-            // Update lang toggle button text
             langToggle.textContent = lang.toUpperCase();
         };
 
@@ -1365,40 +1327,33 @@
             const container = document.querySelector('.carousel-slides');
             container.innerHTML = '';
             languageData[lang].projects.forEach(p => {
-                const card = `
+                container.innerHTML += `
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="${p.img}" alt="${p.title}">
+                            <img src="${p.img}" alt="${p.title}" loading="lazy">
+                            <div class="project-overlay">
+                                <h3>${p.title}</h3>
+                                <p>${p.desc}</p>
+                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.desc}</p>
-                            <ul class="project-meta">
-                                <li><i class="fas fa-map-marker-alt"></i> ${p.location}</li>
-                            </ul>
+                            <div class="project-meta"><i class="fas fa-map-marker-alt"></i> ${p.location}</div>
                         </div>
                     </div>`;
-                container.innerHTML += card;
             });
-            // Re-initialize carousel after populating
             initCarousel();
         };
         
         const populateServices = (lang) => {
             const container = document.querySelector('.services-grid');
             container.innerHTML = '';
-            languageData[lang].services.forEach(s => {
-                const features = s.features.map(f => `<li>${f}</li>`).join('');
-                const card = `
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">${s.icon}</div>
-                            <h3 class="service-title">${s.title}</h3>
-                        </div>
+            languageData[lang].services.forEach((s, index) => {
+                container.innerHTML += `
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="${index * 100}">
+                        <div class="service-icon"><i class="${s.icon}"></i></div>
+                        <h3 class="service-title">${s.title}</h3>
                         <p class="service-desc">${s.desc}</p>
-                        <ul class="service-features">${features}</ul>
                     </div>`;
-                container.innerHTML += card;
             });
         };
 
@@ -1408,37 +1363,30 @@
             advisorContainer.innerHTML = '';
             designTeamContainer.innerHTML = '';
 
-            const createTeamCard = (member, isAdvisor = false) => `
-                <div class="team-card ${isAdvisor ? 'advisor' : ''}">
-                    <div class="team-card-img"><img src="${member.img}" alt="${member.name}"></div>
+            const createTeamCard = (member, index) => `
+                <div class="team-card" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="team-card-img"><img src="${member.img}" alt="${member.name}" loading="lazy"></div>
                     <div class="team-card-info">
                         <h4>${member.name}</h4>
                         <span class="designation">${member.designation}</span>
                         <p>${member.details}</p>
                         <div class="team-socials">
-                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                             <a href="#"><i class="fas fa-envelope"></i></a>
+                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                             <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>`;
 
-            languageData[lang].advisors.forEach(m => {
-                advisorContainer.innerHTML += createTeamCard(m, true);
-            });
-            languageData[lang].designTeam.forEach(m => {
-                designTeamContainer.innerHTML += createTeamCard(m, false);
-            });
+            languageData[lang].advisors.forEach((m, i) => advisorContainer.innerHTML += createTeamCard(m, i));
+            languageData[lang].designTeam.forEach((m, i) => designTeamContainer.innerHTML += createTeamCard(m, i));
         };
 
         // --- UI INTERACTIONS ---
+        AOS.init({ duration: 800, once: true, offset: 100 });
 
-        // Header Scroll Effect
         const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
 
-        // Mobile Navigation
         const nav = document.querySelector('.main-nav');
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const navCloseBtn = document.querySelector('.nav-close-btn');
@@ -1446,22 +1394,17 @@
 
         menuToggle.addEventListener('click', () => nav.classList.add('active'));
         navCloseBtn.addEventListener('click', () => nav.classList.remove('active'));
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => nav.classList.remove('active'));
-        });
+        navLinks.forEach(link => link.addEventListener('click', () => nav.classList.remove('active')));
 
-        // Active nav link on scroll
         const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.main-nav a');
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 150)) {
+                if (pageYOffset >= (section.offsetTop - 150)) {
                     current = section.getAttribute('id');
                 }
             });
-            
             navItems.forEach(item => {
                 item.classList.remove('active');
                 if (item.getAttribute('href').includes(current)) {
@@ -1470,22 +1413,20 @@
             });
         });
 
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             alert(languageData[currentLang].formSubmissionAlert);
-            contactForm.reset();
+            e.target.reset();
         });
 
-        // Projects Carousel
         let carouselInitialized = false;
         function initCarousel() {
-            const carouselSlides = document.querySelector('.carousel-slides');
-            if (!carouselSlides) return;
+            const container = document.querySelector('.carousel-container');
+            if (!container) return;
+            const carouselSlides = container.querySelector('.carousel-slides');
+            if (!carouselSlides || carouselSlides.children.length === 0) return;
+            
             const slides = carouselSlides.querySelectorAll('.project-card');
-            if (slides.length === 0) return;
-
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             let currentIndex = 0;
@@ -1499,7 +1440,7 @@
 
             function updateCarousel() {
                 const visibleSlides = getVisibleSlidesCount();
-                const maxIndex = slideCount - visibleSlides;
+                const maxIndex = Math.max(0, slideCount - visibleSlides);
                 if (currentIndex > maxIndex) currentIndex = maxIndex;
                 if (currentIndex < 0) currentIndex = 0;
                 
@@ -1509,33 +1450,23 @@
 
             nextBtn.addEventListener('click', () => {
                 const visibleSlides = getVisibleSlidesCount();
-                if (currentIndex < slideCount - visibleSlides) {
-                    currentIndex++;
-                    updateCarousel();
-                }
+                currentIndex = (currentIndex < slideCount - visibleSlides) ? currentIndex + 1 : 0;
+                updateCarousel();
             });
 
             prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
+                const visibleSlides = getVisibleSlidesCount();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - visibleSlides;
+                updateCarousel();
             });
             
             if (!carouselInitialized) {
                 window.addEventListener('resize', updateCarousel);
-                setInterval(() => {
-                    const visibleSlides = getVisibleSlidesCount();
-                    currentIndex = (currentIndex + 1) % (slideCount - visibleSlides + 1);
-                    updateCarousel();
-                }, 5000);
                 carouselInitialized = true;
             }
-
             updateCarousel();
         }
 
-        // Dark Mode Toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         const savedTheme = localStorage.getItem('theme');
@@ -1543,13 +1474,7 @@
         
         function updateThemeIcon() {
             const icon = themeToggle.querySelector('i');
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
+            icon.className = body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
         }
         
         themeToggle.addEventListener('click', () => {
@@ -1558,11 +1483,9 @@
             updateThemeIcon();
         });
 
-        // Language Toggle
         const langToggle = document.getElementById('langToggle');
         langToggle.addEventListener('click', () => {
-            const newLang = currentLang === 'bn' ? 'en' : 'bn';
-            setLanguage(newLang);
+            setLanguage(currentLang === 'bn' ? 'en' : 'bn');
         });
 
         // --- INITIALIZE APP ---
